@@ -86,11 +86,11 @@
     <p> BRDF's have 3 key properties: </p>
       <ul>
        <li>BRDF is a positive function, meaning that for all define inputs of the function, the output is positive.
-       </li>
+         </li>
        <li>BRDF is reciprocal. In other words, BRDF(ωi,ωr)=BRDF(ωr,ωi) if you swap the incoming and outgoing direction in the function, the function returns the same result.
-       </li>
+         </li>
        <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light than it receives. This is because an object cannot reflect more light than the amount of light incident on its surface. (unless the surface is emissive, which is an exception)
-       </li>
+         </li>
       </ul>
 
       <p class="lead"><b>What is a normal map?</b></p>
@@ -105,6 +105,21 @@
       </p>
       <img src="images/normalmap.jpg" alt="normal map">
       <p><i>image source : http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/</i></p>
+
+      <p class="lead"><b>Introduction to microfacets</b></p>
+      <p> Specular: light is perfectly reflected in a mirror-like way from the light source to the viewer. This occurs when the surface normal
+         is oriented exactly halfway between the direction of incident light and the direction of the viewer. </p>
+
+      <p> Specular highlights: bright spot of light that appears on shiny objects when illuminated </p>
+
+      <p>However, many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets.
+        We assume that surfaces contain many tiny facets and are not perfectly smooth. There are many microfacet models which
+        have been very successful at modelling light reflection from rough surfaces. (Eg. Cook-Torrence model) </p>
+        <img src="images/microfacet.png" alt="microfacet">
+        <p><i>image source : http://glasnost.itcarlow.ie/~powerk/GeneralGraphicsNotes/LightingShadingandColour/lighting.html</i></p>
+
+
+
 
 
 
