@@ -86,14 +86,37 @@
     <p> BRDF's have 3 key properties: </p>
       <ul>
        <li>BRDF is a positive function, meaning that for all define inputs of the function, the output is positive.
-</li>
+       </li>
        <li>BRDF is reciprocal. In other words, BRDF(ωi,ωr)=BRDF(ωr,ωi) if you swap the incoming and outgoing direction in the function, the function returns the same result.
-</li>
-      <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light than it receives. This is because an object cannot reflect more light than the amount of light incident on its surface. (unless the surface is emissive, which is an exception)
-</li>
+       </li>
+       <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light than it receives. This is because an object cannot reflect more light than the amount of light incident on its surface. (unless the surface is emissive, which is an exception)
+       </li>
       </ul>
 
+      <p class="lead"><b>What is a normal map?</b></p>
+      <p>In geometry, the normal is a vector or that’s perpendicular to a surface or an object. Normal map creates the illusion of depth detail on the surface of a model.
+        A normal map uses RGB information that corresponds directly with the X, Y and Z axis in 3D space (R for X , G for Y and B for Z). This RGB information tells the 3D
+         redenering applications how the direction of the surface normals are oriented in for every polygon in the image.
+         These orientations, also known as normals, tell the 3D applications how the polygon should be shaded.
+      </p>
+      <p> While normal maps cannot represent extremely irregular geometry, they are capable of rendering small indents and bumps
+          along a flat surface. Hence, it would be suitable for rendering scratched metals. Normal maps do not add any real geometry,
+          but they use the colors to create highlights and shadows that would be present if there were more geometry.
+      </p>
+      <img src="images/normalmap.jpg" alt="normal map">
+      <p><i>image source : http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/</i></p>
+
+
+
       </div>
+
+
+      <div class="container">
+        <h1 class="mt-5">Geometric aspect of modelling</h1> <!--- Chris' part --->
+      </div>
+
+
+
 
     </main>
 
