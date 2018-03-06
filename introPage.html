@@ -72,14 +72,31 @@
 
 	  <!-- Write your page content here -->
 	  <div class="container">
-        <h1 class="mt-5">Create sub-headings like this.</h1>
-	    <p class="lead">Or like this.</p>
-	    <p>Most of the objects we interact with on daily basis have scratches of a certain amount or possess some sort of other damage. Very rarely we can find a material that has a perfectly smooth surface. Human eyes are used to notice those types of detail, even on subconscious level. For that reason if object appears to be too perfect to an observer, it would look fake or unrealistic. Adding those types of defects to an object's surface in a computer generated image plays an important role in achieving a higher level of realism. As stated earlier, in reality scratches are imperfections of an object surface which result in change of geometry of that particular surface. In computer graphics, modeling all of those details could result in a tremendously big number of surface faces (polygons) which would be a serious performance hit when rendering the image. Not only in rendering time, but modeling such a massive amount of detail would increase modeling time as well as making such an object unusable to any kind of application in the field of computer graphics.
+        <h1 class="mt-5">Reasons for rendering Scratched Metals</h1>
+	    <!-- <p class="lead">Or like this.</p> -->
+            <p></p>
+	    <p>The ever-expanding demand for creating closer to photorealistic computer-generated visualizations leads to the need for more accurate simulations of real-world materials. Most of the objects we interact with on daily basis have scratches or other surface imperfections of a certain amount or possess some sort of other damage due to weathering and aging conditions, collection of dust and dirt on their surfaces etc. Very rarely can we find a material that has a perfectly smooth surface. Human eyes are used to notice those types of detail, even on subconscious level. For that reason if object appears to be too perfect to an observer, it would look fake or unrealistic. Adding those types of defects to an object's surface in a computer generated image plays an important role in achieving a higher level of realism.
 		</p>
+                <p>In reality scratches are imperfections of an object surface which result in change of geometry of that particular surface. In computer graphics, modeling all of those details could result in a tremendously big number of surface faces (polygons) which would be a serious performance hit when rendering the image. Not only in rendering time, but modeling such a massive amount of detail would increase modeling time as well as making such an object unusable to any kind of application in the field of computer graphics.
+                </p>
 
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
+		<p>The reason one is able to perceive any object or surface is due to the presence of some sort of a light source. Without light nothing would be visible to an observer. Having that observation, the simulation of a surface material of a certain type relies mainly on the light-surface interaction and the properties that define a certain material type. With the continuously increasing computer power and technological advancements, it becomes possible to compute with higher precision the interaction between light and virtual materials using physically-based environmental conditions and material properties
+http://www2.compute.dtu.dk/pubdb/views/edoc_download.php/6645/pdf/imm6645.pdf
+
 		</p>
-      </div>  
+         <h1 class="mt-6">Differences between Metals and Non-Metals(Di-Electrics)</h1>
+         <h5 class="mt-8"> In terms of reflectance </h5>
+         <p> Compared to di-electrics, metals are more lustrous, malleable (can easily be hammered into sheets) and ductile(can be made into bendable wires). </p>
+         <p> Unlike in di-electrics, reflected light from metals is the same wavelength as incident light. </p>
+         <h5 class="mt-7"> In terms of BRDF </h5>
+         <p> There are two types of BRDFs : isotropic and anisotropic
+         <ul>
+           <li> Isotropic BRDFs represent light reflectance that does not chage when the surface is rotated around the normal. Examples of materials that show this property are smooth surfaces such as smoth plastics. </li>
+           <li> Anisotropic BRDFs change with respect to rotation of the surface. Examples inclyude brushed metals and satin. </li>
+         </ul>
+         <p> Most real world materials are anisotropic to some degree, however the effect in some materials is so subtle that it can be neglected and modelled as an isotropic material. </p>
+
+      </div>
 
     </main>
 
