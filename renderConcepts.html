@@ -85,8 +85,11 @@
            </li>
          <li> E is the irradiance (power recieved by a surface per unit area)
            </li>
-         <li> thetai is the angle between wi and
+         <li> &Theta;<sub>i</sub> is the angle between w<sub>i</sub> and n
             </li>
+          <li> w<sub>i</sub> is the direction of the incident ray
+        </li>
+        <li> w<sub>r</sub> is the direction of the reflected ray
         </ul>
 
 
@@ -101,7 +104,7 @@
       <ul>
        <li>BRDF is a positive function, meaning that for all define inputs of the function, the output is positive.
          </li>
-       <li>BRDF is reciprocal. In other words, BRDF(ωi,ωr)=BRDF(ωr,ωi) if you swap the incoming and outgoing direction in the function, the function returns the same result.
+       <li>BRDF is reciprocal. In other words, BRDF(ω<sub>i</sub>,ω<sub>r</sub>) = BRDF(ω<sub>r</sub>,ω<sub>i</sub>) if you swap the incoming and outgoing direction in the function, the function returns the same result.
          </li>
        <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light than it receives. This is because an object cannot reflect more light than the amount of light incident on its surface. (unless the surface is emissive, which is an exception)
          </li>
