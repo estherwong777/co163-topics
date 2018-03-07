@@ -142,20 +142,13 @@
       <p> A complete description of the geometry of the surface is important in determining the BRDF,
         which is used by the computer to determine how light is reflected on every point on the surface. </p>
 
-
-
-
-
-
-
-
     </div>
 
     <div class="container">
         <h1 class="mt-5">Reflective aspect of modelling</h1>
 	    <p class="lead"><b>What is a BRDF?</b></p>
-	    <p> A BRDF is a function that defines the amount of light reflected in the view direction for a given incident and outgoing light direction. These directions are
-        taken in a co-ordinate system where the surface normal (n) acts as the z-axis.
+	    <p> A BRDF is a function that defines the amount of light reflected in the view direction for a given incident and
+        outgoing light direction. These directions are taken in a co-ordinate system where the surface normal (n) acts as the z-axis.
       </p>
       <p> The BRDF formal definition is as follows: </p>
       <img src="images/brdfequation.png" alt="BRDF equation">
@@ -178,15 +171,23 @@
 
 
 
-		<p>Many rendering models like Cook-Torrance, are examples of BRDFs. Many BRDFs have been proposed other the years: some are designed to model a specific type of material. For example the Oren-Nayar model is suited to model the surface of the moon, which does not reflect light like a diffuse surface would. (diffuse surfaces scatter light at many angle when incident with one ray).
+		<p>Many rendering models like Cook-Torrance, are examples of BRDFs. Many BRDFs have
+      been proposed other the years: some are designed to model a specific type of material.
+      For example the Oren-Nayar model is suited to model the surface of the moon, which
+       does not reflect light like a diffuse surface would. (diffuse surfaces scatter light
+        at many angle when incident with one ray).
 		</p>
     <p> BRDF's have 3 key properties: </p>
       <ul>
-       <li>BRDF is a positive function, meaning that for all define inputs of the function, the output is positive.
+       <li>BRDF is a positive function, meaning that for all define inputs of the function,
+         the output is positive.
          </li>
-       <li>BRDF is reciprocal. In other words, BRDF(ω<sub>i</sub>,ω<sub>r</sub>) = BRDF(ω<sub>r</sub>,ω<sub>i</sub>) if you swap the incoming and outgoing direction in the function, the function returns the same result.
+       <li>BRDF is reciprocal. In other words, BRDF(ω<sub>i</sub>,ω<sub>r</sub>) = BRDF(ω<sub>r</sub>,ω<sub>i</sub>) if you swap
+         the incoming and outgoing direction in the function, the function returns the same result.
          </li>
-       <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light than it receives. This is because an object cannot reflect more light than the amount of light incident on its surface. (unless the surface is emissive, which is an exception)
+       <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light t
+         han it receives. This is because an object cannot reflect more light than the amount of light
+         incident on its surface. (unless the surface is emissive, which is an exception)
          </li>
       </ul>
 
@@ -210,40 +211,24 @@
           we use these two equations to calculate the ratio of each of the two waves.
         </p>
 
-
-
-
-
-
       <p class="lead"><b>Introduction to microfacets</b></p>
       <p> Specular: light is perfectly reflected in a mirror-like way from the light source to the viewer. This occurs when the surface normal
          is oriented exactly halfway between the direction of incident light and the direction of the viewer. </p>
 
       <p> Specular highlights: bright spot of light that appears on shiny objects when illuminated </p>
+      <p><img src="images/specular.png" alt="specular" width="400"></p>
+      <i>image source : http://smerity.com/montelight-cpp/</i>
+      <p> The above image shows the effects of microfacets in metal reflections. The leftmost sphere is
+        specular, but the ones near the right contain microfacets which blurr the specular highlights.
+    </p>
 
-      <p>However, many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets.
+      <p>Many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets.
         We assume that surfaces contain many tiny facets and are not perfectly smooth. There are many microfacet models which
-        have been very successful at modelling light reflection from rough surfaces. (Eg. Cook-Torrence model) </p>
+        have been very successful at modelling light reflection from rough surfaces. Eg.
+          <a href="cookTorranceModel.html">Cook-Torrence model</a> </p>
         <img src="images/microfacet.png" alt="microfacet">
         <p><i>image source : http://glasnost.itcarlow.ie/~powerk/GeneralGraphicsNotes/LightingShadingandColour/lighting.html</i></p>
-        <p class = "lead"><b>Modelling the microgeometry of scratches</b></p>
-
-        <p> Groove and peaks are the main features of a scratch. These features can be modelled using the shape of the scratcher. In order to deduce
-        the depth of the scratch, we can used a derived function that relates the depth of penetration p, with the applied force f,
-        and the hardness of the material m. (This equation assumes that no material is loss during the scratch process)
-       </p>
-
-
-
-
       </div>
-
-
-
-
-
-
-
     </main>
 
     <footer class="blockquote-footer">
