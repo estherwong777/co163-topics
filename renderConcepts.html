@@ -74,8 +74,22 @@
 	  <div class="container">
         <h1 class="mt-5">Reflective aspect of modelling</h1>
 	    <p class="lead"><b>What is a BRDF?</b></p>
-	    <p>A BRDF is a function that returns the amount of light reflected in the view direction for a given incident light direction. BRDF essentially describes how a given object reflects light. We usually denote the function in the form BRDF(ωi,ωr).
-    </p>
+	    <p> A BRDF is a function that defines the amount of light reflected in the view direction for a given incident and outgoing light direction. These directions are
+        taken in a co-ordinate system where the surface normal (n) acts as the z-axis.
+      </p>
+      <p> The BRDF formal definition is as follows: </p>
+      <img src="images/brdfequation.png" alt="BRDF equation">
+      <p> Equation variables </p>
+        <ul>
+         <li> L is the radiance (power from the source per area into a certain solid angle)
+           </li>
+         <li> E is the irradiance (power recieved by a surface per unit area)
+           </li>
+         <li> thetai is the angle between wi and
+            </li>
+        </ul>
+
+
     <img src="images/brdf.png" alt="BRDF diagram">
     <p><i>image source : https://en.wikipedia.org/wiki/Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.svg</i></p>
 
@@ -121,7 +135,8 @@
 
         <p> Groove and peaks are the main features of a scratch. These features can be modelled using the shape of the scratcher. In order to deduce
         the depth of the scratch, we can used a derived function that relates the depth of penetration p, with the applied force f,
-        and the hardness of the material m. (This equation assumes that no material is loss during the scratch process)</p>
+        and the hardness of the material m. (This equation assumes that no material is loss during the scratch process)
+       </p>
 
 
 
