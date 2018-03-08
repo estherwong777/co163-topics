@@ -72,12 +72,79 @@
 
 	  <!-- Write your page content here -->
 	  <div class="container">
-        <h1 class="mt-5">Create sub-headings like this.</h1>
-	    <p class="lead">Or like this.</p>
-	    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
+        <h1 class="mt-5">Phong Reflection Model</h1>
+		<!-- references: http://slideplayer.com/slide/9298423/, http://slideplayer.com/slide/10089296/, https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm, http://graphics.cs.cmu.edu/nsp/course/15-462/Spring04/slides/07-lighting.pdf, ILLUMINATION FOR COMPUTER-GENERATED
+          IMAGES (Phong's paper), https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm, https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF -->
+	    <p class="lead">This is an early model, the paper for which was published in 1975.</p>
+	    <p>The Phong reflection model is an empirical model based on physical observations: in particular, Phong's observations regarding specular reflection and specular highlight. Specular highlights occur on an object where there is a bright spot on the material at a certain viewing angle. For metals, this is especially pronounced, due to its smooth and shiny surface, creating more distinct highlights.
+
+		<p>From his observations, Phong determined that the specular highlight was smaller and the edges more distinct for shiny surfaces than for more dull surfaces, where the highlight was larger and had a less distinct edge.
+		</p>
+		<p>In Phong's model, light reflection has three components: specular reflection, diffuse reflection, and ambient reflection, which are all summed to form the final BRDF.
+		</p>
+		<p><img src="images/phongVisual.png" style="display:block; margin-left:auto; margin-right:auto"></p> <!-- https://en.wikipedia.org/w/index.php?title=File%3APhong_components_version_4.png -->
+		</p>
+		<p>Diffuse reflection is affected by the texture of the suface of the object, and the effect of it is greater in objects which are dull with rough surfaces, as the microfacets in the surface will reflect light in many directions. Ambient light is equal in all directions, and so all surfaces are illuminated equally by ambient light. For each of these components, a constant coefficient is defined, the value of which is dependent on the incident light and the material:
+		</p>
+		<ul>
+		  <li>k<sub>s</sub> - specular reflection coefficient
+		  <li>k<sub>d</sub> - diffuse reflection coefficient
+		  <li>k<sub>a</sub> - ambient reflection coefficient
+		</ul>
+		<p>In an RGB model, the equation can be used to model the intensity of each colour separately, altering the k<sub>s</sub>, k<sub>d</sub> and k<sub>a</sub> constants depending on the colour.
+		</p>
+		<p>The light in a scene is also broken down into components corresponding to these three properties:
+		</p>
+		<ul>
+		  <li>i<sub>s</sub> - specular intensity
+		  <li>i<sub>d</sub> - diffuse intensity
+		  <li>i<sub>a</sub> - ambient intensity
+		</ul>
+		<p>The Phong model is dependent on four vectors: <img src="images/unitN.svg" width="18" height="18">, <img src="images/unitL.svg" width="18" height="18">, <img src="images/unitV.svg" width="18" height="18">, and <imag src="images/unitR.svg" width="18" height="18">. <img src="images/unitN.svg" width="18" height="18"> represents the normal to the surface, <img src="images/unitV.svg" width="18" height="18"> represents the light direction, <img src="images/unitV.svg" width="18" height="18"> represents the viewing direction, and <img src="images/unitR.svg" width="18" height="18"> represents the direction a perfectly reflected ray of light would take. Each of these are unit vectors, and are illustrated below:
+		<img src=""> <!-- DIAGRAM SHOWING VECTORS AND ANGLES like https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm --> 
+		</p>
+		<p>Considering just the ambient and diffuse reflectance, the ambient reflectance will depend on k<sub>a</sub> and I<sub>a</sub>. As for diffuse reflectance, the reflected intensity is not affected by the direction of the viewer, but depends solely on the direction of the light source with respect to the normal of the surface. Therefore, the diffuse reflectance is proportional to <img src="images/cosTheta.svg" width="35" height="20">, where <img src="images/theta.svg" width="10" height="20"> represents the angle between the normal and the light source. Using the scalar dot product and unit direction vectors for the normal and light, we can express the diffuse reflectance if we define the following variables:
+		</p>
+		<ul>
+	      <li><img src="images/unitN.svg" width="20" height="20"> - normal to the surface (unit vector)
+		  <Li><img src="images/unitL.svg" width="20" height="20"> - direction vector from point on surface to light source (unit vector)
+		  <li><img src="images/lightIntensity.svg" width="20" height="20"> - light source intensity
+        </ul>
+		<p>The equation so far for intensity of light at a point, only taking ambient and diffuse reflectance into account, can therefore be written:
+		  <br><img src="images/phongsEqnPt1.svg" style="display:block; margin-left:auto; margin-right:auto">
+		</p>  
+        <p>For the final component, the specular reflectance depends on the direction of viewing (V) and material. For an ideal reflector, specular reflectance can only be observed when V = R, where R is the direction of a perfectly reflected light ray. However, for real objects, the maximum intensity occurs at this angle, but specular reflectance can still be observed over a range of values of <img src="images/alpha.svg" width="10" height="20">, where <img src="images/alpha.svg" width="10" height="20"> = the angle between V and R. We define the following variables:
+		<ul>
+		  <li><img src="images/unitV.svg" width="20" height="20"> - direction vector for viewing direction (unit vector)
+		  <li><img src="images/unitR.svg" width="20" height="20"> - direction of specular reflectance (unit vector)
+		  <li><img src="images/latexN.svg" width="15" height="15"> - specular exponent/shininess - constant which models specular reflectance for a material
+        </ul>
+		<p>Phong observed that the shinier the surface, the smaller the specular highlight, and so the smaller the range of <img src="images/alpha.svg" width="10" height="20"> over which it could be observed. The specular reflectance is proportional to <img src="images/cosAlpha.svg" width="35" height="20">, and so using the scalar dot product and unit direction vectors for V and R again, we can calculate the intensity of specular reflectance, giving the final BRDF:
+		  <br><img src="images/phongsEqnPt2.svg" style="display:block; margin-left:auto; margin-right:auto">
 		</p>
 
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
+		<p>If there are multiple light sources, the BRDF can be altered so we sum the non-ambient components for all lights.
+		</p>
+
+		<p class="lead">Advantages of the Phong model</p>
+		<p>The main advantage of the Phong model is that it is fairly simple to compute, and so provides an efficient way of rendering light reflectance on surfaces, whilst also being relatively simple to implement. This has made it very popular to use. Other models have built on Phong's model, such as the Blinn-Phong model, which makes the assumption that the viewer and light source are at infinity, speeding up the computation time. <!-- FIND REFERENCE -->
+		</p>
+
+		<p class="lead">Limitations of the Phong model</p>
+		<p>One problem with using the Phong model to render scratched metals is that it assumes specular highlights are of the same colour as the light source, which does not hold true for metals in particular, although it is true for dielectrics. Other more advanced models, such as the <a href="cookTorranceModel.html">Cook-Torrance model</a> do not suffer from this problem, as they take the colour contribution from the surface into account, making the Phong model weaker at rendering metals in comparison.
+		</p>
+        </p>Another issue with the Phong model is that it does not satisfy one of the main BRDF properties, as it is not energy conserving, creating more light than it receives. This means the Phong model is physically incorrect, as it is based on physical observation rather than physics, using Phong's informal observations of light reflectance. For example, the constants <image src="images/latexN.svg" width="13" height="13"> and k<sub>s</sub> which are used to model specular reflectance have no physical meaning, instead being adjusted by the user to achieve the highlight intensity they want.
+		</p>
+		<p><img src="images/specularChangingConstants.png" style="display:block; margin-left:auto; margin-right:auto"></p>
+		</p>
+		<p class="lead">Additional/Phong shading</p>
+		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect, where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
+		</p>
+
+
+		<h1 class="mt-5">Lambertian Model</h1>
+		<p class="lead">text</p>
+		<p>Valid for smooth matte surfaces, reflected intensity does not depend on direction of viewer, but depends on direction of light source
 		</p>
       </div> 
 
