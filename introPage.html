@@ -73,26 +73,22 @@
 	  <!-- Write your page content here -->
 	  <div class="container">
         <h1 class="mt-5">Reasons for rendering Scratched Metals</h1>
-	    <!-- <p class="lead">Or like this.</p> -->
             <p></p>
-	    <p>The ever-expanding demand for creating closer to photorealistic computer-generated visualizations leads to the need for more accurate simulations of real-world materials. Most of the objects we interact with on daily basis have scratches or other surface imperfections of a certain amount or possess some sort of other damage due to weathering and aging conditions, collection of dust and dirt on their surfaces etc. Very rarely can we find a material that has a perfectly smooth surface. Human eyes are used to notice those types of detail, even on subconscious level. For that reason if object appears to be too perfect to an observer, it would look fake or unrealistic. Adding those types of defects to an object's surface in a computer generated image plays an important role in achieving a higher level of realism.
+	    <p>The ever-expanding demand for creating closer to photorealistic computer-generated visualizations leads to the need for more accurate simulations of real-world materials. Most of the objects we interact with on daily basis have scratches or other surface imperfections of a certain amount or possess some sort of other damage due to weathering and aging conditions, collection of dust and dirt on their surfaces etc. Very rarely can we find a material that has a perfectly smooth surface. Human eyes are used to notice those types of detail, even on subconscious level. For that reason if object appears to be too perfect to an observer, it would look fake or unrealistic. Adding those types of defects to an object's surface in a computer generated image plays an important role in achieving a higher level of realism. <sup> <a href="#ref1"> [1] </a></sup>
 		</p>
 
 
-		<p>The reason one is able to perceive any object or surface is due to the presence of some sort of a light source. Without light nothing would be visible to an observer. Having that observation, the simulation of a surface material of a certain type relies mainly on the light-surface interaction and the properties that define a certain material type. With the continuously increasing computer power and technological advancements, it becomes possible to compute with higher precision the interaction between light and virtual materials using physically-based environmental conditions and material properties
-http://www2.compute.dtu.dk/pubdb/views/edoc_download.php/6645/pdf/imm6645.pdf
-
-		</p>
          <h1 class="mt-6">Differences between Metals and Non-Metals(Di-Electrics)</h1>
          <h5 class="mt-8"> In terms of physical appearance(color) </h5>
          <p> Compared to di-electrics, metals are more lustrous. Most metals are grey-white and shiny, while metals such as copper, gold and caesium exhibit a golden colour. In contrast, di-electrics are usually colourless or are dull shades of red, green, yellow, and other intermediary colours (Exceptions include carbon, phophorous, selenium and iodine, which are shiny and white-grey)</p>
          <h5 class="mt-8"> In terms of reflectance </h5>
          <p> Metals also have a very high reflectivity compared to di-electrics.</p>
          <div style="padding-left: 3em">
-           <h5> In physics terms </h5>
-           <p> https://www.quora.com/Why-are-metals-lustrous </p>
+           <h6> In physics terms </h6>
            <p> In metal atoms, the outermost shell contains free electrons that are not bound to the atom. These electrons are in constant motion and reflect back any light that is incident on them. This reflection is specular and gives metals a lustrous appearance. This reflected light has the same wavelength as the incident light.</p>
            <p> In di-electrics, the outermost shells are nearly filled, restricting the movement of the electrons. The reflected light is diffused and gives them a dull appearance </p>
+           <p> A closer look scratches also reveals iridescent colors. The physics behind this phenomenon is well understood; it is caused by diffraction of the incident light by surface features on the order of the optical wavelength.<sup> <a href="#ref2"> [2] </a> </sup></p>
+         </div>
 
          <!--p> Unlike in di-electrics, reflected light from metals is the same wavelength as incident light. </p-->
          <h5 class="mt-7"> In terms of BRDF </h5>
@@ -101,15 +97,21 @@ http://www2.compute.dtu.dk/pubdb/views/edoc_download.php/6645/pdf/imm6645.pdf
            <li> Isotropic BRDFs represent light reflectance that does not chage when the surface is rotated around the normal. Examples of materials that show this property are smooth surfaces such as smoth plastics. </li>
            <li> Anisotropic BRDFs change with respect to rotation of the surface. Examples include brushed metals and satin. </li>
          </ul>
-         <p> Most real world materials are anisotropic to some degree, however the effect in some materials is so subtle that it can be neglected and modelled as an isotropic material. </p>
+         <p> Most real world materials are anisotropic to some degree, however the effect in some materials is so subtle that it can be neglected and modelled as an isotropic material.  <sup> <a href="#ref1"> [1] </a></sup></p>
          <h1> Challenges in Rendering scratches </h1>
          <ul type="square">
+           <li> Modelling and rendering imperfections and irregularities remains one of the greatest challenges in computer graphics. </li>
            <li>In reality scratches are imperfections of an object surface which result in change of geometry of that particular surface. In computer graphics, modeling all of those details could result in a tremendously big number of surface faces (polygons) which would be a serious performance hit when rendering the image. Not only in rendering time, but modeling such a massive amount of detail would increase modeling time as well as making such an object unusable to any kind of application in the field of computer graphics. </li>
            <li>One crucial problem in rendering is the appropriate representation of the local behaviour of light interacting with materials (Greenberg et al. 1997). </li>
          </ul>
-
-         <p>
-         </p>
+         <h1>Differences between rendering a metal from a distance and up close</h1>
+         <p> The anisotropy in materials is created because the distribution of the surface normals along the scratches is different from the distribution across them. If the observer is distant enough from the surface, these features cannot be seen individually. Instead, the impression of a homogeneous surface is created. <sup><a href="#ref3"> [3] </a></sup> </p>
+         <h6> References </h6>
+         <ol>
+           <li><a name="ref1">Veselin Mihaylov. "Rendering Metals and Worn or Weathered Metallic Objects" <a href="http://www2.compute.dtu.dk/pubdb/views/edoc_download.php/6645/pdf/imm6645.pdf">Click here to view paper</a></a></li>
+           <li><a name="ref2">"Scratch iridescence: Wave-optical rendering of diffractive surface structure" <a href="https://arxiv.org/pdf/1705.06086.pdf">Click here to view paper</a></a></li>
+           <li><a name="ref3">Efficient Rendering of Anisotropic Surfaces Using Computer Graphics Hardware <a href="http://vccimaging.org/Publications/Heidrich1998ERA/Heidrich1998ERA.pdf"> Click to view paper </a> </a> </li>
+         </ol>
 
 
       </div>
