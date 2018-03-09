@@ -71,10 +71,18 @@
       </div>
 
 	  <!-- Write your page content here -->
-	  <div class="container">
-        <h1 class="mt-5">Ward's Model of Anisotropic Reflection</h1>
+	  <div class="container"> <!-- add info about more efficient approximation, also rendering section in his paper? go through papers again, write about isotropic model -->
+        <h1 class="mt-5">Ward's Model of Anisotropic Reflection</h1> <!-- References: https://cseweb.ucsd.edu/~ravir/6998/papers/p265-ward.pdf, https://www.graphics.cornell.edu/~bjw/wardnotes.pdf, https://en.wikibooks.org/wiki/GLSL_Programming/Unity/Brushed_Metal, https://books.google.co.uk/books?id=a9I4HHu79xcC&pg=PA76&lpg=PA76&dq=ward+reflectance+model&source=bl&ots=2ZFNN5sW4y&sig=j8WTIYQJEdl-J47ZV8p3DerOPew&hl=en&sa=X&ved=0ahUKEwi49LGn1N3ZAhWCD8AKHT9LC-44ChDoAQhkMAk#v=onepage&q=ward%20reflectance%20model&f=false, http://digibug.ugr.es/bitstream/10481/19751/1/rmontes_LSI-2012-001TR.pdf, http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.169.9908&rep=rep1&type=pdf, http://www.opengl-tutorial.org/beginners-tutorials/tutorial-8-basic-shading/, https://www.slideserve.com/maya/real-time-rendering, -->
 	    <p class="lead">Ward's model was first published in a SIGGRAPH paper in 1992, along with a measurement method for anisotropic reflection.</p>
-	    <p>Ward's model aimed "not to present the ultimate mathematical model of reflectance", instead aiming to create one which fit measured reflectance data accurately, whilst maintaining mathematical simplicity, allowing faster rendering and implementation. As this model is used to model anisotropic reflection, three axes must be defined: we define the z-axis as the same as the normal vector from that point on the surface, whilst the x and y axes are tangential to the surface in perpendicular directions to each axis. 
+		<div id="centered-image">
+		<img class="centered-image" src="images/wardExample.png">&nbsp; <!--http://www.cs.utah.edu/~thiago/cs7650/hw6/index.html -->
+		<img class="centered-image" src="images/wardExample2.png" width="400"> <!--http://blog.mpanknin.de/?p=769 -->
+		</div>
+
+		<p>Ward's model aimed "not to present the ultimate mathematical model of reflectance", instead aiming to create one which fit measured reflectance data accurately, whilst maintaining mathematical simplicity, allowing faster rendering and implementation. Ward defined both an isotropic and anisotropic model. However, as we want to focus on applying his model to scratched metals, we will explore his anisotropic model, which allows the rendering of anisotropic effects such as scratches in the surface of the metal, which have direction.
+		</p>
+
+		<p>As this model is used to model anisotropic reflection, three axes must be defined: we define the z-axis as the same as the normal vector from that point on the surface, whilst the x and y axes are tangential to the surface in perpendicular directions to each axis. 
 		</p>
 		
 		<p>The Ward BRDF is defined by two components: a diffuse reflection term and a specular reflection term. The diffuse reflection is modelled by p<sub>d</sub>, which represents the diffuse reflectance, and the constant &#960. Our equation so far is written as:
@@ -108,7 +116,7 @@
 		  <li><img src="images/phiH.svg" width="20" height="20"> - azimuthal angle of half vector <!-- add definition of azimuthal angle somewhere -->
         </ul>
 
-		<p>Lastly, an approximate normalisation term, <img src="images/wardNormalisationTerm.svg" width="50" height="30">, is added, which ensures energy is conserved in the model. The final BRDF is then produced:
+		<p>Lastly, an approximate normalisation term, <img src="images/wardNormalisationTerm.svg" width="50" height="30">, is added, which not only ensures energy is conserved in the model, but also is defined such that the total surface reflectnce = <img src="images/rhoD.svg" width="18" height="18"> + <img src="images/rhoS.svg" width="18" height="18">. The final BRDF is then produced:
 		</p>
 
 		<p>
@@ -117,9 +125,22 @@
 
 		<p>Normally the constants <img src="images/alphaX.svg" width="18" height="18"> and <img src="images/alphaY.svg" width="18" height="18"> for the surface slope are set by the user rather than measured. 
 		</p>
+		
+		<p class="lead">Advantages of Ward's Model</p>
+		<p>Each constant parameter in the model corresponds to a physical meaning, as Ward intended. This means that the values for these parameters can be set independent of measured data if necessary to provide a valid BRDF.
+		</p>
+		<p>When Ward tested his model and rendering, he found that it accurately fit a wide variety of materials including metals with different textures such as brushed aluminium, rolled brass and rolled aluminium.
+		</p>
+		<p>Ward's model is also fairly fast to use, having a relative cost of 7.9, in comparison with the Cook-Torrance model, with a relative cost of 16.9. The comparison of Ward's model with various other models is illustrated below:
+		</p>
+		
+		<p><img src="" style="display:block; margin-left:auto; margin-right:auto"></p> <!-- Extract data from this table http://digibug.ugr.es/bitstream/10481/19751/1/rmontes_LSI-2012-001TR.pdf -->
 
 		<p class="lead">Limitations of Ward's Model</p>
 		<p>One of the limitations is that the normalisation factor is only accurate for values <img src="images/normalisationCondition.svg" width="60" height="15">. However, for this value of alpha, the surface is mostly modelled by diffuse reflectance instead.
+		</p>
+		<p>Additionally, there are still many materials which did not fit the BRDF defined by Ward...
+		</p>
 
       </div> 
 

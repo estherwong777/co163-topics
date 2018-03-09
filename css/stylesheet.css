@@ -16,3 +16,14 @@ footer p {
 .jumbotron {
   border-radius:.1rem;
 }
+
+/* Used to centre images next to each other on pages */
+#centered-image {
+	text-align:center;
+}
+
+.centered-image {
+	display:inline-block;
+	margin-left:auto;
+	margin-right:auto;
+}
