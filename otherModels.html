@@ -73,10 +73,11 @@
 	  <!-- Write your page content here -->
 	  <div class="container">
         <h1 class="mt-5">Phong Reflection Model</h1>
+		<!-- Change Phong equations so F_r(wi, wo) = .... ? -->
 		<!-- references: http://slideplayer.com/slide/9298423/, http://slideplayer.com/slide/10089296/, https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm, http://graphics.cs.cmu.edu/nsp/course/15-462/Spring04/slides/07-lighting.pdf, ILLUMINATION FOR COMPUTER-GENERATED
           IMAGES (Phong's paper), https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm, https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF -->
 	    <p class="lead">This is an early model, the paper for which was published in 1975.</p>
-	    <p>The Phong reflection model is an empirical model based on physical observations: in particular, Phong's observations regarding specular reflection and specular highlight. Specular highlights occur on an object where there is a bright spot on the material at a certain viewing angle. For metals, this is especially pronounced, due to its smooth and shiny surface, creating more distinct highlights.
+	    <p>The Phong reflection model is an empirical model based on physical observations: in particular, Phong's observations regarding specular reflection and specular highlight. Specular highlights occur on an object where there is a bright spot on the material at a certain viewing angle. For metals, this is especially pronounced, due to its smooth and shiny surface, creating more distinct highlights, and most of the light reflection on metals is composed of specular reflection.
 
 		<p>From his observations, Phong determined that the specular highlight was smaller and the edges more distinct for shiny surfaces than for more dull surfaces, where the highlight was larger and had a less distinct edge.
 		</p>
@@ -135,6 +136,8 @@
 		</p>
         </p>Another issue with the Phong model is that it does not satisfy one of the main BRDF properties, as it is not energy conserving, creating more light than it receives. This means the Phong model is physically incorrect, as it is based on physical observation rather than physics, using Phong's informal observations of light reflectance. For example, the constants <image src="images/latexN.svg" width="13" height="13"> and k<sub>s</sub> which are used to model specular reflectance have no physical meaning, instead being adjusted by the user to achieve the highlight intensity they want.
 		</p>
+		<p>The Phong model also does not satisfy the reciprocal property of a BRDF, as the surface is modelled to reflect light in one directly different than in the other, when the angle of incidence and reflected angles are swapped. This is not physically possible, and so means the Phong model is physically incorrect.
+		</p>
 		<p><img src="images/specularChangingConstants.png" style="display:block; margin-left:auto; margin-right:auto"></p>
 		</p>
 		<p class="lead">Additional/Phong shading</p>
@@ -142,7 +145,7 @@
 		</p>
 
 
-		<h1 class="mt-5">Lambertian Model</h1>
+		<h1 class="mt-5">Lambertian Model</h1> <!-- https://www.slideserve.com/maya/real-time-rendering -->
 		<p class="lead">text</p>
 		<p>Valid for smooth matte surfaces, reflected intensity does not depend on direction of viewer, but depends on direction of light source
 		</p>
