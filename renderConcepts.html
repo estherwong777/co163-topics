@@ -150,7 +150,7 @@
 	    <p> A BRDF is a function that defines the amount of light reflected in the view direction for a given incident and
         outgoing light direction. These directions are taken in a co-ordinate system where the surface normal (n) acts as the z-axis.
       </p>
-      <p> The BRDF formal definition is as follows (first defined by Fred Nicodemus) <a href="#ref1>"> [1]</a>: </p>
+      <p> The BRDF formal definition is as follows (first defined by Fred Nicodemus)[1] : </p>
       <img src="images/brdfequation.png" alt="BRDF equation">
       <p> Equation variables </p>
         <ul>
@@ -165,11 +165,8 @@
         <li> w<sub>r</sub> is the direction of the reflected ray
         </ul>
 
-
     <img src="images/brdf.png" alt="BRDF diagram">
-    <p><i>image source : https://en.wikipedia.org/wiki/Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.svg</i></p>
-
-
+    <p>Figure 2.1 : Diagram showing vectors used in the BRDF definition [3]</p>
 
 		<p>Many rendering models like Cook-Torrance, are examples of BRDFs. Many BRDFs have
       been proposed other the years: some are designed to model a specific type of material.
@@ -177,7 +174,7 @@
        does not reflect light like a diffuse surface would. (diffuse surfaces scatter light
         at many angle when incident with one ray).
 		</p>
-    <p> BRDF's have 3 key properties: </p>
+    <p> BRDF's have 3 key properties [2] : </p>
       <ul>
        <li>BRDF is a positive function, meaning that for all define inputs of the function,
          the output is positive.
@@ -202,41 +199,64 @@
           but they use the colors to create highlights and shadows that would be present if there were more geometry.
       </p>
       <img src="images/normalmap.jpg" alt="normal map">
-      <p><i>image source : http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-13-normal-mapping/</i></p>
+      <p>Figure 2.2 : Example of a normal map [4]</p>
 
       <p class="lead"><b>The use of Frensel's equations</b><p>
         <p> Fresnel's equations are used to render transparent objects which both refract and reflect light. Metals are mostly reflective,
           while dielectric materials like glass have more refraction than metals. Light is composed of two perpendicular
           waves are called the parallel and the perpendicular polarised light. In order to know the ratio of reflected and refracted light,
-          we use these two equations to calculate the ratio of each of the two waves.
+          we use these two equations to calculate the ratio of each of the two waves. [7]
         </p>
 
+        <p><img src="images/frensel.png" width="400"></p>
+        <p> Figure 2.3 : Frensel's equation for both parrallel and perpendicular light rays </p>
+
+        <p><img src="images/frenselavg.png" width="330"></p>
+        <p> Figure 2.4 : Averaging the two rays </p>
+
+        <p> By averaging these two computed formulas, we get a ratio F(subscript r) of the reflected light. </p>
+
+
       <p class="lead"><b>Introduction to microfacets</b></p>
-      <p> Specular: light is perfectly reflected in a mirror-like way from the light source to the viewer. This occurs when the surface normal
+      <p><b>Diffuse reflection</b>: When light that is incident on a surface scatters at various angles rather than just one (specular reflection).
+
+      <p><b>Specular reflection</b>: light is perfectly reflected in a mirror-like way from the light source to the viewer. This occurs when the surface normal
          is oriented exactly halfway between the direction of incident light and the direction of the viewer. </p>
 
-      <p> Specular highlights: bright spot of light that appears on shiny objects when illuminated </p>
+      <p><b>Specular highlights</b>: bright spot of light that appears on shiny objects when illuminated </p>
       <p><img src="images/specular.png" alt="specular" width="400"></p>
-      <i>image source : http://smerity.com/montelight-cpp/</i>
+      <p>Figure 2.5 : Spheres showing specular and non-specular effects [5]</p>
+
       <p> The above image shows the effects of microfacets in metal reflections. The leftmost sphere is
         specular, but the ones near the right contain microfacets which blurr the specular highlights.
     </p>
+    <p><img src="images/diffusevspec.png"></p>
+    <p>Figure 2.6 : Diffuse vs. Specular reflections [9]</p>
 
-      <p>Many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets.
-        We assume that surfaces contain many tiny facets and are not perfectly smooth. There are many microfacet models which
-        have been very successful at modelling light reflection from rough surfaces. Eg.
-          <a href="cookTorranceModel.html">Cook-Torrence model</a> </p>
-        <img src="images/microfacet.png" alt="microfacet">
-        <p><i>image source : http://glasnost.itcarlow.ie/~powerk/GeneralGraphicsNotes/LightingShadingandColour/lighting.html</i></p>
+      <p>Many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets and
+        the concept of diffuse reflections. We assume that surfaces contain many tiny facets and are not perfectly smooth.
+        Therefore, each individual light ray that reaches the parts of the material surface at different orientations. Hence,
+        the rays reflect in various directions, creating a diffuse reflection effect. [8] There are many microfacet models which have
+        been very successful at modelling light reflection from rough surfaces. Eg.
+          <a href="cookTorranceModel.html">Cook-Torrance model</a> </p>
+        <p><img src="images/microfacet.png" alt="microfacet"></p>
+        <p>Figure 2.7 : Reflections are spread out over many angles due to orientation of microfacets [6]</p>
+        <br/>
       </div>
 
-      <br/>
       <div class="container">
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">References  &#9662; </button>
           <div id="demo" class="collapse">
             <!--- Add your references here--->
-            <br/><a name="ref1">[1] F. Nicodemus, "Directional reflectance and emissivity of an opaque surface", 1965.</a>
-            <br/> Reference 2
+            <br/>[1] F. Nicodemus, "Directional reflectance and emissivity of an opaque surface", 1965.
+            <br/>[2] M. McCrory, "Bi-Directional Reflectance Distribution Functions (BRDF’s)", The University of Utah.
+            <br/>[3] Diagram showing vectors used to define the BRDF.. 2018.
+            <br/>[4] OpenGL-Tutorial, Normal texture. .
+            <br/>[5] T. Brennan, S. Merity and T. Wilson, Materials with different BRDFs. 2014.
+            <br/>[6] K. Power, Specular reflection is spread out over many angles due to orientation of microfacets. 1996.
+            <br/>[7] "Reflection, Refraction and Fresnel", Introduction to Shading. .
+            <br/>[8] "Specular vs. Diffuse Reflection", Physicsclassroom.com. [Online]. Available: http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection. [Accessed: 09- Mar- 2018].
+            <br/>[9] The Physics Classroom, Comparison of specular and diffuse reflections. .
       </div>
 
     </main>
