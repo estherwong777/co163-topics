@@ -72,13 +72,55 @@
 
 	  <!-- Write your page content here -->
 	  <div class="container">
-        <h1 class="mt-5">Create sub-headings like this.</h1>
-	    <p class="lead">Or like this.</p>
-	    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
+        <h1 class="mt-5">Ward's Model of Anisotropic Reflection</h1>
+	    <p class="lead">Ward's model was first published in a SIGGRAPH paper in 1992, along with a measurement method for anisotropic reflection.</p>
+	    <p>Ward's model aimed "not to present the ultimate mathematical model of reflectance", instead aiming to create one which fit measured reflectance data accurately, whilst maintaining mathematical simplicity, allowing faster rendering and implementation. As this model is used to model anisotropic reflection, three axes must be defined: we define the z-axis as the same as the normal vector from that point on the surface, whilst the x and y axes are tangential to the surface in perpendicular directions to each axis. 
+		</p>
+		
+		<p>The Ward BRDF is defined by two components: a diffuse reflection term and a specular reflection term. The diffuse reflection is modelled by p<sub>d</sub>, which represents the diffuse reflectance, and the constant &#960. Our equation so far is written as:
+		</p>
+		<p><img src="images/wardEqnPt1.svg" style="display:block; margin-left:auto; margin-right:auto"></p>
+		<p>where I<sub>s</sub> is equal to the specular reflection term, which will be defined.
+		</p>
+		
+		<p>The specular reflection term is much more complex, and to help to understand the three constants defined in the equation, we can look at the concept of specular lobes. Lobes refer to the shape of the specular reflection formed by light reflected off the surface of an object, which forms a lobe shape. On mirror-like surfaces, the width of the lobe is thinner, creating a specular reflection covering a smaller area. Conversely, on rough surfaces, the width of the lobe is larger, with the distribution of light intensity centred around the angle of reflection, due to the many microfacets within the surface. While the width of the lobe represents the area covered by the specular reflection, the magnitude of the lobe represents the intensity of light at that direction. 
+		</p>
+		<p>
+		<img src="images/specularLobe.png" style="display:block; margin-left:auto; margin-right:auto">
+		</p>
+		<p>
+		The three constant parameters defined in the equation:
+		</p>
+		<ul>
+		  <li><img src="images/rhoS.svg" width="20" height="20"> - specular reflectance, describing the intensity of specular highlights/lobe magnitude
+		  <li><img src="images/alphaX.svg" width="20" height="20"> - standard deviation of surface slope in x direction of anisotropy (can be thought of as width of lobe in one direction)
+		  <li><img src="images/alphaY.svg" width="20" height="20"> - standard deviation of surface slope in y direction of anisotropy (can be thought of as width of lobe in other direction)
+        </ul>
+		<p>If <img src="images/alphaX.svg" width="20" height="20"> = <img src="images/alphaY.svg" width="20" height="20">, then the lobe is isotropic, as it is the same in all viewing directions around the z-axis.
+		</p>
+		<p>The half vector is defined as the direction halfway between the incident direction of light and reflected direction. The rest of the equation uses parameters defined by the following angles:
 		</p>
 
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
+		<ul>
+		  <li><img src="images/thetaI.svg" width="20" height="20"> - polar angle between normal and incident direction <!-- add definition of polar angle somewhere -->
+		  <li><img src="images/thetaO.svg" width="20" height="20"> - polar angle between normal and reflecting direction
+		  <li><img src="images/thetaH.svg" width="20" height="20"> - angle between half vector and surface normal 
+		  <li><img src="images/phiH.svg" width="20" height="20"> - azimuthal angle of half vector <!-- add definition of azimuthal angle somewhere -->
+        </ul>
+
+		<p>Lastly, an approximate normalisation term, <img src="images/wardNormalisationTerm.svg" width="50" height="30">, is added, which ensures energy is conserved in the model. The final BRDF is then produced:
 		</p>
+
+		<p>
+		<img src="images/wardsEqn.svg" style="display:block; margin-left:auto; margin-right:auto">
+		</p>
+
+		<p>Normally the constants <img src="images/alphaX.svg" width="18" height="18"> and <img src="images/alphaY.svg" width="18" height="18"> for the surface slope are set by the user rather than measured. 
+		</p>
+
+		<p class="lead">Limitations of Ward's Model</p>
+		<p>One of the limitations is that the normalisation factor is only accurate for values <img src="images/normalisationCondition.svg" width="60" height="15">. However, for this value of alpha, the surface is mostly modelled by diffuse reflectance instead.
+
       </div> 
 
     </main>
