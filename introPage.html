@@ -72,15 +72,54 @@
 
 	  <!-- Write your page content here -->
 	  <div class="container">
-        <h1 class="mt-5">Create sub-headings like this.</h1>
-	    <p class="lead">Or like this.</p>
-	    <p>Most of the objects we interact with on daily basis have scratches of a certain amount or possess some sort of other damage. Very rarely we can find a material that has a perfectly smooth surface. Human eyes are used to notice those types of detail, even on subconscious level. For that reason if object appears to be too perfect to an observer, it would look fake or unrealistic. Adding those types of defects to an object's surface in a computer generated image plays an important role in achieving a higher level of realism. As stated earlier, in reality scratches are imperfections of an object surface which result in change of geometry of that particular surface. In computer graphics, modeling all of those details could result in a tremendously big number of surface faces (polygons) which would be a serious performance hit when rendering the image. Not only in rendering time, but modeling such a massive amount of detail would increase modeling time as well as making such an object unusable to any kind of application in the field of computer graphics.
+        <h1 class="mt-5">Reasons for rendering Scratched Metals</h1>
+            <p></p>
+	    <p>The ever-expanding demand for creating closer to photorealistic computer-generated visualizations leads to the need for more accurate simulations of real-world materials. Most of the objects we interact with on daily basis have scratches or other surface imperfections of a certain amount or possess some sort of other damage due to weathering and aging conditions, collection of dust and dirt on their surfaces etc. Very rarely can we find a material that has a perfectly smooth surface. Human eyes are used to notice those types of detail, even on subconscious level. For that reason if object appears to be too perfect to an observer, it would look fake or unrealistic. Adding those types of defects to an object's surface in a computer generated image plays an important role in achieving a higher level of realism. <sup> <a href="#ref1"> [1] </a></sup>
 		</p>
 
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
-		</p>
-      </div>  
 
+         <h1 class="mt-6">Differences between Metals and Non-Metals(Di-Electrics)</h1>
+         <h5 class="mt-8"> In terms of physical appearance(color) </h5>
+         <p> Compared to di-electrics, metals are more lustrous. Most metals are grey-white and shiny, while metals such as copper, gold and caesium exhibit a golden colour. In contrast, di-electrics are usually colourless or are dull shades of red, green, yellow, and other intermediary colours (Exceptions include carbon, phophorous, selenium and iodine, which are shiny and white-grey)</p>
+         <h5 class="mt-8"> In terms of reflectance </h5>
+         <p> Metals also have a very high reflectivity compared to di-electrics.</p>
+         <p>The mirror reflectance of dielectrics varies much more dramatically with angle, and its minimum is much lower, typically 4-5%. The distinction between metals and dielectrics is embodied in the refractive index n which is a real number for dielectrics and a complex number for metals.</p>
+         <div style="padding-left: 3em">
+           <h6> In physics terms </h6>
+           <p> In metal atoms, the outermost shell contains free electrons that are not bound to the atom. These electrons are in constant motion and reflect back any light that is incident on them. This reflection is specular and gives metals a lustrous appearance. This reflected light has the same wavelength as the incident light.</p>
+           <p> In di-electrics, the outermost shells are nearly filled, restricting the movement of the electrons. The reflected light is diffused and gives them a dull appearance. </p>
+           <p> A closer look scratches also reveals iridescent colors. The physics behind this phenomenon is well understood; it is caused by diffraction of the incident light by surface features on the order of the optical wavelength.<sup> <a href="#ref2"> [2] </a> </sup></p>
+         </div>
+
+         <h5 class="mt-7"> In terms of BRDF </h5>
+         <p> There are two types of BRDFs : isotropic and anisotropic
+         <ul>
+           <li> Isotropic BRDFs represent light reflectance that does not chage when the surface is rotated around the normal. Examples of materials that show this property are smooth surfaces such as smoth plastics. </li>
+           <li> Anisotropic BRDFs change with respect to rotation of the surface. Examples include brushed metals and satin. </li>
+         </ul>
+         <p> Most real world materials are anisotropic to some degree, however the effect in some materials is so subtle that it can be neglected and modelled as an isotropic material.  <sup> <a href="#ref1"> [1] </a></sup></p>
+         <h1> Challenges in Rendering scratches </h1>
+
+           <p> Modelling and rendering imperfections and irregularities remains one of the greatest challenges in computer graphics. </p>
+           <p>In reality scratches are imperfections of an object surface which result in change of geometry of that particular surface. In computer graphics, modeling all of those details could result in a tremendously big number of surface faces (polygons) which would be a serious performance hit when rendering the image. Not only in rendering time, but modeling such a massive amount of detail would increase modeling time as well as making such an object unusable to any kind of application in the field of computer graphics. </p>
+           <p>One crucial problem in rendering is the appropriate representation of the local behaviour of light interacting with materials. <sup><a href="#ref4"> [4] </a></sup> </p>
+
+         <h1>Differences between rendering a metal from a distance and up close</h1>
+         <p> The anisotropy in materials is created because the distribution of the surface normals along the scratches is different from the distribution across them. If the observer is distant enough from the surface, these features cannot be seen individually. Instead, the impression of a homogeneous surface is created. <sup><a href="#ref3"> [3] </a></sup> </p>
+
+
+
+      </div>
+      <div class="container">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">References  &#9662; </button>
+          <div id="demo" class="collapse">
+            <!--- Add your references here--->
+            <br/><a name="ref1">[1] Veselin Mihaylov. "Rendering Metals and Worn or Weathered Metallic Objects" <a href="http://www2.compute.dtu.dk/pubdb/views/edoc_download.php/6645/pdf/imm6645.pdf">Click here to view paper</a></a>
+            <br/> <a name="ref2">[2] "Scratch iridescence: Wave-optical rendering of diffractive surface structure" <a href="https://arxiv.org/pdf/1705.06086.pdf">Click here to view paper</a></a>
+            <br/> <a name="ref3">[3] Wolfgang Heidrich and Hans-Peter Seidel. "Efficient Rendering of Anisotropic Surfaces Using Computer Graphics Hardware" <a href="http://vccimaging.org/Publications/Heidrich1998ERA/Heidrich1998ERA.pdf"> Click to view paper </a> </a>
+            <br/> <a name="ref4">[4] S. Merillou, J.M. Dischler, D. Ghazanfarpour. "Surface scratches:measuring, modeling and rendering" <a href="https://link.springer.com/content/pdf/10.1007%2Fs003710000093.pdf"> Click here to view paper </a> </a>
+
+      </div>
     </main>
 
     <footer class="blockquote-footer">
