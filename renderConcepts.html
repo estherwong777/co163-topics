@@ -71,10 +71,7 @@
       </div>
 
 	  <!-- Write your page content here -->
-rendering_concepts
 
-
-master
     <div class="container">
       <h1 class="mt-5">Reflective aspect of modelling</h1>
 	    <p class="lead"><b>What is a BRDF?</b></p>
@@ -90,14 +87,14 @@ master
             </li>
          <li> &Theta;<sub>i</sub> is the angle between w<sub>i</sub> and n
             </li>
-         <li> w<sub>i</sub> is the direction of the incident ray
+         <li> &omega;<sub>i</sub> is the direction of the incident ray
             </li>
-        <li> w<sub>r</sub> is the direction of the reflected ray
+        <li> &omega;<sub>r</sub> is the direction of the reflected ray
             </li>
       </ul>
 
       <img src="images/brdf.png" alt="BRDF diagram" style="display:block; margin-left:auto; margin-right:auto">
-      <p><center>Figure 1.1 : Diagram showing vectors used in the BRDF definition [3]</center></p>
+      <div class="caption"><p>Figure 1.1 : Diagram showing vectors used in the BRDF definition [3]</p></div>
 
 		 <p>Many rendering models like Cook-Torrance, are examples of BRDFs. Many BRDFs have
        been proposed other the years: some are designed to model a specific type of material.
@@ -109,8 +106,8 @@ master
        <li>BRDF is a positive function, meaning that for all define inputs of the function,
          the output is positive.
          </li>
-       <li>BRDF is reciprocal. In other words, BRDF(ω<sub>i</sub>,ω<sub>r</sub>) = BRDF(ω<sub>r</sub>,ω<sub>i</sub>) if you swap
-         the incoming and outgoing direction in the function, the function returns the same result.
+       <li>BRDF is reciprocal. In other words, BRDF(&omega;<sub>i</sub>,ω<sub>r</sub>) = BRDF(&omega;<sub>r</sub>,ω<sub>i</sub>)
+         if you swap the incoming and outgoing direction in the function, the function returns the same result.
          </li>
        <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light t
          han it receives. This is because an object cannot reflect more light than the amount of light
@@ -128,7 +125,7 @@ master
           but they use the colors to create highlights and shadows that would be present if there were more geometry. </p>
 
       <img src="images/normalmap.jpg" alt="normal map" style="display:block; margin-left:auto; margin-right:auto">
-      <p><center>Figure 1.2 : Example of a normal map [4]</center></p>
+      <div class="caption"><p>Figure 1.2 : Example of a normal map [4]</p></div>
 
       <p class="lead"><b>The use of Fresnel's equations</b></p>
         <p> Fresnel's equations are used to render transparent objects which both refract and reflect light. Metals are mostly reflective,
@@ -147,12 +144,12 @@ master
         <br/>
 
         <p><center><img src="images/frensel.png" width="400" style="display:block; margin-left:auto; margin-right:auto"></center></p>
-        <p> <center>Figure 1.3 : Frensel's equation for both parrallel and perpendicular light rays</center></p>
+        <div class="caption"><p>Figure 1.3 : Frensel's equation for both parrallel and perpendicular light rays</p></div>
 
         <br/>
 
         <p><center><img src="images/frenselavg.png" width="330" style="display:block; margin-left:auto; margin-right:auto"></center></p>
-        <p><center>Figure 1.4 : Averaging the two rays</center></p>
+        <div class="caption"><p>Figure 1.4 : Averaging the two rays</p></div>
 
         <p>By averaging these two computed formulas, we get a ratio F<sub>r</sub> of the reflected light. In other words,
           F<sub>r</sub> tells us how effective a surface of a material is at reflecting light.
@@ -168,24 +165,23 @@ master
       <p><b>Specular highlights</b>: bright spot of light that appears on shiny objects when illuminated </p>
     </br>
       <p><img src="images/specular.png" alt="specular" width="650" style="display:block; margin-left:auto; margin-right:auto"></p>
-      <p><center>Figure 1.5 : Spheres showing specular and non-specular effects [5]</center></p>
+      <div class="caption"><p>Figure 1.5 : Spheres showing specular and non-specular effects [5]</p></div>
 
       <p> The above image shows the effects of microfacets in metal reflections. The leftmost sphere is
         specular, but the ones near the right contain microfacets which blurr the specular highlights.</p>
       </br>
       <p><img src="images/diffusevspec.png" style="display:block; margin-left:auto; margin-right:auto" width="650"></p>
-      <p><center>Figure 1.6 : Diffuse vs. Specular reflections [9]</center></p>
+      <div class="caption"><p>Figure 1.6 : Diffuse vs. Specular reflections [9]</p></div>
       </br>
 
       <p>Many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets and
         the concept of diffuse reflections. We assume that surfaces contain many tiny facets and are not perfectly smooth.
         Therefore, each individual light ray reaches the material surface at different orientations. Hence,
         the rays reflect in various directions, creating a diffuse reflection effect. [8] There are many microfacet models which have
-        been very successful at modelling light reflection from rough surfaces.
-        Eg. <a href="cookTorranceModel.html" style="display:block; margin-left:auto; margin-right:auto">Cook-Torrance model</a></p>
+        been very successful at modelling light reflection from rough surfaces. Eg. <a href="cookTorranceModel.html" style="display:block; margin-left:auto; margin-right:auto">Cook-Torrance model</a></p>
 
        <p><img src="images/microfacet.png" alt="microfacet" style="display:block; margin-left:auto; margin-right:auto"></p>
-       <p><center>Figure 1.7 : Reflections are spread out over many angles due to orientation of microfacets [6]</center></p>
+       <div class="caption"><p>Figure 1.7 : Reflections are spread out over many angles due to orientation of microfacets [6]</p></div>
        <br/>
       </div>
 
