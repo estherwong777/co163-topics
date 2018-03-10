@@ -27,3 +27,15 @@ footer p {
 	margin-left:auto;
 	margin-right:auto;
 }
+
+.caption {
+  font-style: italic;
+  font-size: 9px;
+  text-align: center;
+}
+
+cap {
+  font-style: italic;
+  font-size: 11px;
+  text-align: center;
+}
