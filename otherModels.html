@@ -77,7 +77,9 @@
 
 
 	    <p><img src="images/lambertianExample.png" style="display:block; margin-left:auto; margin-right:auto; width:40%"></p> <!-- http://amietia.com/lambertnotangent.html -->
-		<p>A Lambertian surface is described as one which reflects light with equal intensity in all directions, and so the diffuse reflectance can be calculated independently of the viewing angle. The light source is assumed to be a point, such that all incident rays on the surface are parallel. To understand the Lambertian model, there are a few concepts and terms to be aware of.
+		<p>A Lambertian surface is described as one which reflects light with equal intensity in all directions, and so the diffuse reflectance can be
+      calculated independently of the viewing angle. The light source is assumed to be a point, such that all incident rays on the surface are
+      parallel. To understand the Lambertian model, there are a few concepts and terms to be aware of.
 		</p>
 		<ul>
 		  <li>Incident radiance, <i>L<sub>r</sub>(x)</i> - radiant flux/power received by surface per unit solid angle per unit projected area
@@ -89,9 +91,48 @@
 		</p>
 		<p><img src="images/latex/albedoEqn.svg" style="display:block; margin-left:auto; margin-right:auto;"></p>
 
-		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant:
+		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant. &rho;<sub>d</sub>
+  is the reflectivity of the surface. Reflectivity ranges from 0, meaning that the material is completely absorbing, to 1, meaning that the material is completely reflecting.[12]:
 		</p>
 		<p><img src="images/latex/lambertianEqn.svg" style="display:block; margin-left: auto; margin-right: auto"></p>
+    <br/><br/>
+    <p class="lead">Lambert's Cosine Law</p>
+    <p> All Lambertian surfaces obey this law. This law states that the radiant intensity observed from an ideally diffusely reflecting
+      surface is directly proportional to the cosine of angle &Theta;, which is between the surface normal and the observer’s line of sight. </p>
+      <p><center><img src="images/cosinerule.png" alt="cosine rule" width="25%"></center></p>
+      <div class="caption"><p>Figure 2.1 : Lambert's Cosine Law</p></div>
+
+      <p>Equation Variables [10]:
+        <ul>
+        <li> I<sub>&Theta;</sub> is the intensity of the scattered ray of light at angle &Theta;, where &Theta; is the angle of the scattered ray from the surface normal
+        <li> I<sub>n</sub> is the incident light intensity normal to the surface of the material
+        <li> &Theta; is the angle between the surface normal and the light ray incoming light ray
+        </ul></p>
+
+
+      <p><center><img src="images/lambreflection.png" width="40%"></center></p>
+      <div class="caption"><p>Figure 2.2 : Diagram showing relationship between Lambertian reflection and Lambert's cosine rule [11]</p></div>
+      <br/><br/>
+      <p class="lead">Mathematical proof that the radiance is the same in any
+        viewing direction</p>
+
+        <p>This is the formal definition of radiance, where &#921; represents the Intensity
+          and Acos(&Theta;) represents SOMETHING</p>
+
+        <p><center><img src="images/radiancedef.png" width="20%"></center></p>
+
+        <p> We want to find the radiance at the normal of the surface, so we substitute
+          &Theta; = 0 into the equation. This gives us the equation below. </p>
+
+        <p><center><img src="images/substituteLamb.png" width="16%"></center></p>
+
+        <p>Next, we apply the Lambert’s cosine law, and substitute I<sub>n</sub>cos(&Theta;) for I<sub>&Theta;</sub>, and by
+          rearranging the equation, we see that the reflected radiance no longer depends on &Theta;, and
+          hence the radiance is the same in any viewing direction. </p>
+
+        <p><center><img src="images/rearrangeLamb.png" width="40%"></center></p>
+        <br/>
+
 
 		<p class="lead">Limitations of Lambertian Model</p>
 		<p>The Lambertian model assumes a surface has equal radiance in all directions. Although from a typical viewing distance of a scratched metal surface, this will suffice, as it appears homogeneous from a distance, close-scale rendering will not be accurate, due to the texture created by the scratch grooves. The effect of these grooves means that the average reflectance changes depending on the direction of the grooves, and so the measured BRDF is non-Lambertian [7].
@@ -194,6 +235,11 @@
 		  <!-- https://cseweb.ucsd.edu/~ravir/6998/papers/p265-ward.pdf -->
           <br/>[7] G. J. Ward, "Measuring and Modeling Anisotropic Reflection," in Computers Graphics, ACM SIGGRAPH'92 Conference Proceedings, Chicago, IL, 1992, pp.265-272.
 		  <br/>[8] B. Smith. (2006, Aug. 7). <i>File:Phong components version 4.png</i> [Online]. Available: https://commons.wikimedia.org/wiki/File:Phong_components_version_4.png.
+      <!--- lambertian references --->
+      <br/> [9]"What is a Lambertian Surface?", AZoOptics.com, 2014. [Online]. Available: https://www.azooptics.com/Article.aspx?ArticleID=790. [Accessed: 11- Mar- 2018].
+      <br/> [10]"Lambert's (cosine) law", Electropedia.org, 1987. [Online]. Available: http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-04-56. [Accessed: 11- Mar- 2018].
+      <br/> [11]"Photometry for Traffic Engineers", University of South Dakota.
+      <br/> [12]C. Mobley, Ocean Optics Web Book. 2014.
 
       </div>
 
