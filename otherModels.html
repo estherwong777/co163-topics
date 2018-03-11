@@ -72,7 +72,7 @@
 
 	  <!-- Write your page content here -->
 	  <div class="container">
-	  	<h1 class="mt-5">Lambertian Model</h1> <!-- https://www.slideserve.com/maya/real-time-rendering --> <!-- https://books.google.co.uk/books?id=5wg_TvqLJH4C&pg=PA13&lpg=PA13&dq=lambertian+model+%CF%81d/%CF%80&source=bl&ots=Eam2PR2b3u&sig=Ud_aRXuLL4WjcCGFTdezStBSxI8&hl=en&sa=X&ved=0ahUKEwir-56RruLZAhVDJ8AKHRBPDkIQ6AEINTAC#v=onepage&q=lambertian%20model%20%CF%81d%2F%CF%80&f=false -->
+	  	<h1 class="mt-5">Lambertian Model</h1> <!-- https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/diffuse-lambertian-shading - probably most useful for understanding how two versions of equations link, https://books.google.co.uk/books?id=suLqBgAAQBAJ&pg=PA99&lpg=PA99&dq=lambertian+model+%CF%81d/%CF%80&source=bl&ots=WzMKoY1fca&sig=_3o3JAz6TE5EsuN1C2MvoE04abM&hl=en&sa=X&ved=0ahUKEwir-56RruLZAhVDJ8AKHRBPDkIQ6AEIPTAE#v=onepage&q=lambertian%20model%20%CF%81d%2F%CF%80&f=false,https://books.google.co.uk/books?id=5wg_TvqLJH4C&pg=PA13&lpg=PA13&dq=lambertian+model+%CF%81d/%CF%80&source=bl&ots=Eam2PR2b3u&sig=Ud_aRXuLL4WjcCGFTdezStBSxI8&hl=en&sa=X&ved=0ahUKEwir-56RruLZAhVDJ8AKHRBPDkIQ6AEINTAC#v=onepage&q=lambertian%20model%20%CF%81d%2F%CF%80&f=false, http://people.eng.unimelb.edu.au/adrianrp/COMP30019/slides/illumination_models.pdf, https://www.slideserve.com/maya/real-time-rendering, http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/DRAPER2/L02.pdf -->
 		<p class="lead">Model for diffuse reflectance, based on Lambert's law created by Johann Heinrich Lambert in 1760.</p>
          
 
@@ -92,6 +92,10 @@
 		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant: 
 		</p>
 		<p><img src="images/latex/lambertianEqn.svg" style="display:block; margin-left: auto; margin-right: auto"></p>
+
+		<p class="lead">Limitations of Lambertian Model</p>
+		<p>The Lambertian model assumes a surface has equal radiance in all directions. Although from a typical viewing distance of a scratched metal surface, this will suffice, as it appears homogeneous from a distance, close-scale rendering will not be accurate, due to the texture created by the scratch grooves. The effect of these grooves means that the average reflectance changes depending on the direction of the grooves, and so the measured BRDF is non-Lambertian [7].
+		</p>
 
         <h1 class="mt-5">Phong Reflection Model</h1>
 		<!-- Change Phong equations so F_r(wi, wo) = .... ? -->
@@ -167,6 +171,30 @@
 		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect, where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
 		</p>
       </div> 
+
+	  <div class="container">
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">References  &#9662; </button>
+        <div id="demo" class="collapse">
+          <!-- Add your references here-->
+		  <!-- https://books.google.co.uk/books?id=a9I4HHu79xcC&pg=PA76&lpg=PA76&dq=ward+reflectance+model&source=bl&ots=2ZFNN5sW4y&sig=j8WTIYQJEdl-J47ZV8p3DerOPew&hl=en&sa=X&ved=0ahUKEwi49LGn1N3ZAhWCD8AKHT9LC-44ChDoAQhkMAk#v=onepage&q=ward%20reflectance%20model&f=false -->
+          <br/>[1] J. Dorsey, H. Rushmeier and F. Sillion, <i>Digital Modeling of Material Appearance</i>. San Francisco: Morgan Kaufmann Publishers Inc, 2008.
+		  <!-- https://www.graphics.cornell.edu/~bjw/wardnotes.pdf -->
+          <br/>[2] B. Walter, "Notes on the Ward BRDF," Cornell Program of Computer Graphics., Cornell Univ., New York, Tech. Rep. PCG-05-06, 2005.
+		  <!-- https://cseweb.ucsd.edu/~ravir/6998/papers/p265-ward.pdf -->
+          <br/>[3] G. J. Ward, "Measuring and Modeling Anisotropic Reflection," in Computers Graphics, ACM SIGGRAPH'92 Conference Proceedings, Chicago, IL, 1992, pp.265-272.
+		  <!-- http://digibug.ugr.es/bitstream/10481/19751/1/rmontes_LSI-2012-001TR.pdf -->
+          <br/>[4] R. Montes and C. Ure&ntilde;a, "An Overview of BRDF Models," Dept. Lenguajes y Sistemas Inform&aacute;ticos., University of Granada., Granada, Spain, Tech. Rep. LSI-2012-001, 2012.
+		  <!-- https://books.google.co.uk/books?id=Xcb1CwAAQBAJ&pg=PT362&lpg=PT362&dq=ward+brdf&source=bl&ots=NI3ZKxX8pG&sig=Huf3AzD1balYvXN1LOpwvYPLzyY&hl=en&sa=X&ved=0ahUKEwjqqazH_uHZAhWEOsAKHa2SB_44FBDoAQhGMAU#v=onepage&q=visibility%20term&f=false -->
+          <br/>[5] T. Akenine-M&ouml;ller, E. Haines and N. Hoffman, <i>Real-Time Rendering</i>, 3rd ed. Boca Raton: CRC Press, 2015.
+		  <!-- https://en.wikibooks.org/wiki/GLSL_Programming/Unity/Brushed_Metal -->
+          <br/>[6] Wikibooks. <i>GLSL Programming/Unity/Brushed Metal</i> [Online]. Available: https://en.wikibooks.org/wiki/GLSL_Programming/Unity/Brushed_Metal.
+		  <!-- https://people.cs.umass.edu/~elm/Teaching/Docs/dror_phd_thesis.pdf -->
+          <br/>[7] R. O. Dror, "Surface Reflectance Recognition and Real-World Illumination Statistics," Ph.D. dissertation, Dept. Elec. Eng. and Comput. Sci., Massachusetts Inst. Technol., Cambridge, MA, 2002.
+		  <!-- https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF -->
+		  <br/>[8] Scratchapixel. <i>The Phong Model, Introduction to the Concepts of Shader, Reflection Models and BRDF</i> [Online]. Available: https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF.
+		  <br/>[9] T. Ize. <i>Anisotropic Ward BRDF</i> [Online]. Available: http://www.cs.utah.edu/~thiago/cs7650/hw6/index.html.
+		  <br/>[10] M. Panknin. (2011, Dec. 20). <i>Metal Shading – Ward’s Anisotropic Reflectance Model in Unity3D</i> [Online]. Available: http://blog.mpanknin.de/?p=769.
+      </div>
 
     </main>
 
