@@ -72,6 +72,27 @@
 
 	  <!-- Write your page content here -->
 	  <div class="container">
+	  	<h1 class="mt-5">Lambertian Model</h1> <!-- https://www.slideserve.com/maya/real-time-rendering --> <!-- https://books.google.co.uk/books?id=5wg_TvqLJH4C&pg=PA13&lpg=PA13&dq=lambertian+model+%CF%81d/%CF%80&source=bl&ots=Eam2PR2b3u&sig=Ud_aRXuLL4WjcCGFTdezStBSxI8&hl=en&sa=X&ved=0ahUKEwir-56RruLZAhVDJ8AKHRBPDkIQ6AEINTAC#v=onepage&q=lambertian%20model%20%CF%81d%2F%CF%80&f=false -->
+		<p class="lead">Model for diffuse reflectance, based on Lambert's law created by Johann Heinrich Lambert in 1760.</p>
+         
+
+	    <p><img src="images/lambertianExample.png" style="display:block; margin-left:auto; margin-right:auto; width:40%"></p> <!-- http://amietia.com/lambertnotangent.html -->
+		<p>A Lambertian surface is described as one which reflects light with equal intensity in all directions, and so the diffuse reflectance can be calculated independently of the viewing angle. The light source is assumed to be a point, such that all incident rays on the surface are parallel. To understand the Lambertian model, there are a few concepts and terms to be aware of.
+		</p>
+		<ul>
+		  <li>Incident radiance, <i>L<sub>r</sub>(x)</i> - radiant flux/power received by surface per unit solid angle per unit projected area
+		  <li>Radiosity - total radiation leaving a surface
+		  <li>Irradiance, <i>E(x)</i> - power per unit surface area, calculated by integrating cosine-weighted radiance function over hemisphere above surface at <i>x</i>
+        </ul>
+		
+		For diffuse reflection, the radiance at a point <i>x</i>, in a direction away from the surface is equal to the irradiance from the source multiplied by the BRDF. Radiance is proportional to the radiosity at <i>x</i>, which is proportional to the radiosity at <i>x</i>. The albedo, <i>&rho;<sub>d</sub></i> describes the reflectivity of a surface, or the fraction of irradiance reflected as radiosity. This is defined by:
+		</p>
+		<p><img src="images/latex/albedoEqn.svg" style="display:block; margin-left:auto; margin-right:auto;"></p>
+
+		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant: 
+		</p>
+		<p><img src="images/latex/lambertianEqn.svg" style="display:block; margin-left: auto; margin-right: auto"></p>
+
         <h1 class="mt-5">Phong Reflection Model</h1>
 		<!-- Change Phong equations so F_r(wi, wo) = .... ? -->
 		<!-- references: http://slideplayer.com/slide/9298423/, http://slideplayer.com/slide/10089296/, https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm, http://graphics.cs.cmu.edu/nsp/course/15-462/Spring04/slides/07-lighting.pdf, ILLUMINATION FOR COMPUTER-GENERATED
@@ -102,9 +123,9 @@
 		  <li>i<sub>a</sub> - ambient intensity
 		</ul>
 		<p>The Phong model is dependent on four vectors: <img src="images/latex/unitN.svg" width="18" height="18">, <img src="images/latex/unitL.svg" width="18" height="18">, <img src="images/latex/unitV.svg" width="18" height="18">, and <imag src="images/latex/unitR.svg" width="18" height="18">. <img src="images/latex/unitN.svg" width="18" height="18"> represents the normal to the surface, <img src="images/latex/unitV.svg" width="18" height="18"> represents the light direction, <img src="images/latex/unitV.svg" width="18" height="18"> represents the viewing direction, and <img src="images/latex/unitR.svg" width="18" height="18"> represents the direction a perfectly reflected ray of light would take. Each of these are unit vectors, and are illustrated below:
-		<img src=""> <!-- DIAGRAM SHOWING VECTORS AND ANGLES like https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm --> 
 		</p>
-		<p>Considering just the ambient and diffuse reflectance, the ambient reflectance will depend on k<sub>a</sub> and I<sub>a</sub>. As for diffuse reflectance, the reflected intensity is not affected by the direction of the viewer, but depends solely on the direction of the light source with respect to the normal of the surface. Therefore, the diffuse reflectance is proportional to <img src="images/latex/cosTheta.svg" width="35" height="20">, where <img src="images/latex/theta.svg" width="10" height="20"> represents the angle between the normal and the light source. Using the scalar dot product and unit direction vectors for the normal and light, we can express the diffuse reflectance if we define the following variables:
+        <p><img src="images/phongVectors.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height:40%"></p>
+		<p>Considering just the ambient and diffuse reflectance, the ambient reflectance will depend on k<sub>a</sub> and I<sub>a</sub>. As for diffuse reflectance, the reflected intensity is not affected by the direction of the viewer, but depends solely on the direction of the light source with respect to the normal of the surface. Therefore, the diffuse reflectance is proportional to <img src="images/latex/cosTheta.svg" width="35" height="20">, where <img src="images/latex/theta.svg" width="10" height="20"> represents the angle between the normal and the light source. This uses the Lambertian model of diffuse reflectance. Using the scalar dot product and unit direction vectors for the normal and light, we can express the diffuse reflectance if we define the following variables:
 		</p>
 		<ul>
 	      <li><img src="images/latex/unitN.svg" width="20" height="20"> - normal to the surface (unit vector)
@@ -142,14 +163,8 @@
 		</p>
 		<p><img src="images/specularChangingConstants.png" style="display:block; margin-left:auto; margin-right:auto"></p>
 		</p>
-		<p class="lead">Additional/Phong shading</p>
+		<p class="lead">Additional Notes</p>
 		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect, where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
-		</p>
-
-
-		<h1 class="mt-5">Lambertian Model</h1> <!-- https://www.slideserve.com/maya/real-time-rendering -->
-		<p class="lead">text</p>
-		<p>Valid for smooth matte surfaces, reflected intensity does not depend on direction of viewer, but depends on direction of light source
 		</p>
       </div> 
 
