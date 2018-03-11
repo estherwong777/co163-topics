@@ -74,24 +74,63 @@
 	  <div class="container">
 	  	<h1 class="mt-5">Lambertian Model</h1> <!-- https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/diffuse-lambertian-shading - probably most useful for understanding how two versions of equations link, https://books.google.co.uk/books?id=suLqBgAAQBAJ&pg=PA99&lpg=PA99&dq=lambertian+model+%CF%81d/%CF%80&source=bl&ots=WzMKoY1fca&sig=_3o3JAz6TE5EsuN1C2MvoE04abM&hl=en&sa=X&ved=0ahUKEwir-56RruLZAhVDJ8AKHRBPDkIQ6AEIPTAE#v=onepage&q=lambertian%20model%20%CF%81d%2F%CF%80&f=false,https://books.google.co.uk/books?id=5wg_TvqLJH4C&pg=PA13&lpg=PA13&dq=lambertian+model+%CF%81d/%CF%80&source=bl&ots=Eam2PR2b3u&sig=Ud_aRXuLL4WjcCGFTdezStBSxI8&hl=en&sa=X&ved=0ahUKEwir-56RruLZAhVDJ8AKHRBPDkIQ6AEINTAC#v=onepage&q=lambertian%20model%20%CF%81d%2F%CF%80&f=false, http://people.eng.unimelb.edu.au/adrianrp/COMP30019/slides/illumination_models.pdf, https://www.slideserve.com/maya/real-time-rendering, http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/DRAPER2/L02.pdf -->
 		<p class="lead">Model for diffuse reflectance, based on Lambert's law created by Johann Heinrich Lambert in 1760.</p>
-         
+
 
 	    <p><img src="images/lambertianExample.png" style="display:block; margin-left:auto; margin-right:auto; width:40%"></p> <!-- http://amietia.com/lambertnotangent.html -->
-		<p>A Lambertian surface is described as one which reflects light with equal intensity in all directions, and so the diffuse reflectance can be calculated independently of the viewing angle. The light source is assumed to be a point, such that all incident rays on the surface are parallel. To understand the Lambertian model, there are a few concepts and terms to be aware of.
+		<p>A Lambertian surface is described as one which reflects light with equal intensity in all directions, and so the diffuse reflectance can be
+      calculated independently of the viewing angle. The light source is assumed to be a point, such that all incident rays on the surface are
+      parallel. To understand the Lambertian model, there are a few concepts and terms to be aware of.
 		</p>
 		<ul>
 		  <li>Incident radiance, <i>L<sub>r</sub>(x)</i> - radiant flux/power received by surface per unit solid angle per unit projected area
 		  <li>Radiosity - total radiation leaving a surface
 		  <li>Irradiance, <i>E(x)</i> - power per unit surface area, calculated by integrating cosine-weighted radiance function over hemisphere above surface at <i>x</i>
         </ul>
-		
+
 		For diffuse reflection, the radiance at a point <i>x</i>, in a direction away from the surface is equal to the irradiance from the source multiplied by the BRDF. Radiance is proportional to the radiosity at <i>x</i>, which is proportional to the radiosity at <i>x</i>. The albedo, <i>&rho;<sub>d</sub></i> describes the reflectivity of a surface, or the fraction of irradiance reflected as radiosity. This is defined by:
 		</p>
 		<p><img src="images/latex/albedoEqn.svg" style="display:block; margin-left:auto; margin-right:auto;"></p>
 
-		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant: 
+		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant:
 		</p>
 		<p><img src="images/latex/lambertianEqn.svg" style="display:block; margin-left: auto; margin-right: auto"></p>
+    <br/><br/>
+    <p class="lead">Lambert's Cosine Law</p>
+    <p> All Lambertian surfaces obey this law. This law states that the radiant intensity observed from an ideally diffusely reflecting
+      surface is directly proportional to the cosine of angle &Theta;, which is between the surface normal and the observer’s line of sight. The
+    law is as follows:</p>
+      <p><center><img src="images/cosinerule.png" alt="cosine rule" width="25%"></center></p>
+
+      <p>Equation Variables [10]:
+        <ul>
+        <li> I<sub>&Theta;</sub> is the intensity of the scattered ray of light at angle &Theta;, where &Theta; is the angle of the scattered ray from the surface normal
+        <li> I<sub>n</sub> is the incident light intensity normal to the surface of the material
+        <li> &Theta; is the angle between the surface normal and the light ray incoming light ray
+        </ul></p>
+
+
+      <p><center><img src="images/lambreflection.png" width="40%"></center></p>
+      <div class="caption"><p>Figure 4 : Diagram showing relationship between Lambertian reflection and Lambert's cosine rule [11]</p></div>
+      <br/><br/>
+      <p class="lead">Mathematical proof that the radiance is the same in any
+        viewing direction</p>
+
+        <p>This is the formal definition of radiance: </p>
+
+        <p><center><img src="images/radiancedef.png" width="20%"></center></p>
+
+        <p> We want to find the radiance at the normal of the surface, so we substitute
+          &Theta; = 0 into the equation. This gives us the equation below. </p>
+
+        <p><center><img src="images/substituteLamb.png" width="16%"></center></p>
+
+        <p>Next, we apply the Lambert’s cosine law, and substitute I<sub>n</sub>cos(&Theta;) for I<sub>&Theta;</sub>, and by
+          rearranging the equation, we see that the reflected radiance no longer depends on &Theta;, and
+          hence the radiance is the same in any viewing direction. </p>
+
+        <p><center><img src="images/rearrangeLamb.png" width="40%"></center></p>
+        <br/>
+
 
 		<p class="lead">Limitations of Lambertian Model</p>
 		<p>The Lambertian model assumes a surface has equal radiance in all directions. Although from a typical viewing distance of a scratched metal surface, this will suffice, as it appears homogeneous from a distance, close-scale rendering will not be accurate, due to the texture created by the scratch grooves. The effect of these grooves means that the average reflectance changes depending on the direction of the grooves, and so the measured BRDF is non-Lambertian [7].
@@ -126,6 +165,7 @@
 		  <li>i<sub>a</sub> - ambient intensity
 		</ul>
 		<p>The Phong model is dependent on four vectors: <img src="images/latex/unitN.svg" width="18" height="18">, <img src="images/latex/unitL.svg" width="18" height="18">, <img src="images/latex/unitV.svg" width="18" height="18">, and <imag src="images/latex/unitR.svg" width="18" height="18">. <img src="images/latex/unitN.svg" width="18" height="18"> represents the normal to the surface, <img src="images/latex/unitV.svg" width="18" height="18"> represents the light direction, <img src="images/latex/unitV.svg" width="18" height="18"> represents the viewing direction, and <img src="images/latex/unitR.svg" width="18" height="18"> represents the direction a perfectly reflected ray of light would take. Each of these are unit vectors, and are illustrated below:
+		<img src=""> <!-- DIAGRAM SHOWING VECTORS AND ANGLES like https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm -->
 		</p>
         <p><img src="images/phongVectors.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height:40%"></p>
 		<div class="caption"><p>Figure 2: Diagram depicting the various vectors relevant to Phong's reflection model.</p></div>
@@ -141,8 +181,8 @@
 		</p>
 		<p><img src="images/latex/phongsEqnPt1.svg" style="display:block; margin-left:auto; margin-right:auto"></p>
         <p>where I<sub>s</sub> is equal to the specular reflectance, which will be defined.
-		</p>  
-        <p>For the final component, the specular reflectance depends on the direction of viewing (V) and material. For an ideal reflector, specular reflectance can only be observed when V = R, where R is the direction of a perfectly reflected light ray [5]. However, for real objects, the maximum intensity occurs at this angle, but specular reflectance can still be observed over a range of values of <img src="images/latex/alpha.svg" width="10" height="20">, where <img src="images/latex/alpha.svg" width="10" height="20"> = the angle between V and R. We define the following variables:
+		</p>
+        <p>For the final component, the specular reflectance depends on the direction of viewing (V) and material. For an ideal reflector, specular reflectance can only be observed when V = R, where R is the direction of a perfectly reflected light ray. However, for real objects, the maximum intensity occurs at this angle, but specular reflectance can still be observed over a range of values of <img src="images/latex/alpha.svg" width="10" height="20">, where <img src="images/latex/alpha.svg" width="10" height="20"> = the angle between V and R. We define the following variables:
 		<ul>
 		  <li><img src="images/latex/unitV.svg" width="20" height="20"> - direction vector for viewing direction (unit vector)
 		  <li><img src="images/latex/unitR.svg" width="20" height="20"> - direction of specular reflectance (unit vector)
@@ -172,7 +212,7 @@
 		<p class="lead">Additional Notes</p>
 		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect [1], [2], where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
 		</p>
-      </div> 
+      </div>
 
 	  <div class="container">
       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">References  &#9662; </button>
@@ -193,6 +233,11 @@
 		  <!-- https://cseweb.ucsd.edu/~ravir/6998/papers/p265-ward.pdf -->
           <br/>[7] G. J. Ward, "Measuring and Modeling Anisotropic Reflection," in Computers Graphics, ACM SIGGRAPH'92 Conference Proceedings, Chicago, IL, 1992, pp.265-272.
 		  <br/>[8] B. Smith. (2006, Aug. 7). <i>File:Phong components version 4.png</i> [Online]. Available: https://commons.wikimedia.org/wiki/File:Phong_components_version_4.png.
+      <!--- lambertian references --->
+      <br/> [9]"What is a Lambertian Surface?", AZoOptics.com, 2014. [Online]. Available: https://www.azooptics.com/Article.aspx?ArticleID=790. [Accessed: 11- Mar- 2018].
+      <br/> [10]"Lambert's (cosine) law", Electropedia.org, 1987. [Online]. Available: http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-04-56. [Accessed: 11- Mar- 2018].
+      <br/> [11]"Photometry for Traffic Engineers", University of South Dakota.
+      <br/> [12]C. Mobley, Ocean Optics Web Book. 2014.
 
       </div>
 
