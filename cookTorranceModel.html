@@ -150,18 +150,122 @@
        illuminate a scene.
     </p>
 
+    <p class="lead"> How reflected colour is determined </p>
+
+    <p> <b> Spectral energy distribution </b> is a graph of the energy emitted
+      by an object as a function of different wavelengths. </p>
+
+    <p> The spectral energy distribution of the reflected light is calculated by
+      multiplying the spectral energy distribution of the incident light by
+      the reflectance spectrum of the surface. This spectral energy distribution
+      is then converted to the appropriate RGB values for the monitor to display.
+      This is done by using the laws of trichromatic colour reproduction. </p>
+
+    <p> When applying the Cook-Torrance model, we need to consider the homogeneity
+      of the material to produce realistic images. In other words, if the material
+      is composed of different materials (i.e. one material at the surface and
+      another beneath the surface), and thus their specular and diffuse components
+      may have different colours.</p>
+
+    <p> The specular component depends on how much light is being reflected directly
+      from the surface while the diffuse component depends on how much light
+      penetrates into the material and interacts with the pigments. </p>
+
+    <p> Figure 3 shows an image of a copper-coloured vase and a copper vase.
+      Figure 4 shows the parameters given to the left image and figure 5 shows
+      the parameters given to the right image for rendering. </p>
+
+    <img src="images/phong_vs_cooktorrance.jpg" width="60%" alt="Phong vs Cook-Torrance" style="display:block; margin-left:auto; margin-right:auto">
+    <p class="caption"> Figure 3a (left): rendered copper-coloured vase, Figure 3b (right): rendered copper vase [1]</p>
+
+    <img src="images/coppercoloured_parameters.png" height="110px" alt="Copper-coloured vase parameters" style="display:block; margin-left:auto; margin-right:auto">
+    <p class="caption"> Figure 4 : Parameters for rendered image in figure 3a (Copper-coloured vase) [1]</p>
+
+    <img src="images/coppervase_parameters.png" height="180px" alt="Copper vase parameters" style="display:block; margin-left:auto; margin-right:auto">
+    <p class="caption"> Figure 5 : Parameters for rendered image in figure 3b (Copper vase) [1]</p>
+
+    <p> The left image shows a material with a more plastic-like appearance.
+      Its specular component has the colour of its incident light while its
+      diffuse component has the colour of copper. </p>
+
+    <p> The right image shows a material with a more metal-like appearance.
+      Its specular component has the colour of copper and the diffuse component
+      is non-existent.  The reason for this is that metals conduct electricity.
+      When electromagnetic waves approach the surface, it stimulates the
+      surface electrons which leads to reflection. This results in very little
+      depth penetration of the light so most of the reflection happens at the
+      surface. </p>
+
+    <p> The above example shows that there requires a correct treatment of the
+      colour of the specular component in order to obtain a non-plastic appearance. </p>
+
+    <table style="width:60%" align="center">
+      <tr>
+        <th> Material
+        <th> s
+        <th> d
+        <th> m
+      </tr>
+      <tr>
+        <td> Carbon
+        <td> 0.3
+        <td> 0.7
+        <td> 0.40
+      </tr>
+      <tr>
+        <td> Rubber
+        <td> 0.4
+        <td> 0.6
+        <td> 0.30
+      </tr>
+      <tr>
+        <td> Obsidian
+        <td> 0.8
+        <td> 0.2
+        <td> 0.15
+      </tr>
+      <tr>
+        <td> Lunar dust
+        <td> 0.0
+        <td> 1.0
+        <td> not used
+      </tr>
+      <tr>
+        <td> Olive drab
+        <td> 0.3
+        <td> 0.7
+        <td> 0.50
+      </tr>
+      <tr>
+        <td> Rust
+        <td> 0.2
+        <td> 0.8
+        <td> 0.35
+      </tr>
+    </table>
+    <p class="caption"> Table 1 : this table shows parameters for non-metals used in figure 6. [1] </p>
+
+    <img src="images/differentmaterials.png" width="50%" alt="Different materials rendered" style="display:block; margin-left:auto; margin-right:auto">
+    <p class="caption"> Figure 6 : Examples of different materials rendered using Cook-Torrance </p>
+
+    <p> Note: the 6 non-metals were generated with the parameters on table 1
+      while the metals were generated with the same parameters as figure 3b
+       except for the reflectance spectra. </p>
+
+
     <p class="lead"> Advantanges of the Cook-Torrance model </p>
 
-    <p> Cook-Torrance is better than older models because it was able to avoid giving objects
-      a plastic appearance. This is due to the ambient, diffuse and specular components
-      having better computed colours. The colours also vary if the material is not homogenous. </p>
+    <p> Cook Torrance is better than older models because it was able to avoid giving
+      objects a plastic appearance. This is due to the ambient, diffuse and specular
+      components having better computed colours. Cook-Torrance model takes into account
+      the physical properties of the material being modelled so that it gives a
+      more realistic appearance. </p>
 
     <p> Unlike Phong's model, the Cook-Torrance model is also physically accurate -
       it takes into account the energy of the incident light and makes sure that the energy
       of the reflected light is smaller or equal to that. </p>
 
-    <img src="images/phong_vs_cooktorrance.jpg" width="60%" alt="Phong vs Cook-Torrance" style="display:block; margin-left:auto; margin-right:auto">
-    <p align="middle"> Figure 3 : Rendering using Phong (left) and Cook-Torrance (right) [1]</p>
+
 
     <p class="lead"> Limitations of the Cook-Torrance model </p>
 

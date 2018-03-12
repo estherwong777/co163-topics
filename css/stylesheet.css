@@ -34,8 +34,7 @@ footer p {
   text-align: center;
 }
 
-cap {
-  text-align: center;
-  font-style: italic;
-  font-size: 11px;
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
