@@ -27,26 +27,30 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="landingPage.html">Home <span class="sr-only">(current)</span></a>
           </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="introPage.html">Introduction</a>
+		  </li>	
           <li class="nav-item">
             <a class="nav-link" href="renderConcepts.html">Geometry and Rendering Concepts</a>
           </li>
 		  <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
+			  <a class="dropdown-item" href="otherModels.html">Basic Models (Lambertian, Phong..)</a>
               <a class="dropdown-item" href="cookTorranceModel.html">Cook-Torrance Model</a>
               <a class="dropdown-item" href="wardsModel.html">Ward's Model</a>
               <a class="dropdown-item" href="schlicksModel.html">Schlick's Model</a>
-			  <a class="dropdown-item" href="otherModels.html">Other Models (Lambertian, Phong..)</a>
+			  <a class="dropdown-item" href="#">Advanced Model</a>
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Personal WebPages</a>
+            <a class="nav-link dropdown-toggle active" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Personal WebPages</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="bargavi.html">Bargavi Chandramouli</a>
-              <a class="dropdown-item" href="christopher.html">Christopher Gunadi</a>
+              <a class="dropdown-item active" href="christopher.html">Christopher Gunadi</a>
               <a class="dropdown-item" href="esther.html">Esther Wong</a>
 			  <a class="dropdown-item" href="jasmine.html">Jasmine Quah</a>
             </div>
@@ -60,7 +64,7 @@
 
     <main role="main">
 
-      <div class="jumbotron" style="background:url(images/cover.jpg)">
+      <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Christopher Gunadi</h1>
         </div>
@@ -75,11 +79,18 @@
 
 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
 		</p>
+
+        <div class="next-page">
+	      <a class="btn btn-outline-info btn-lg" href="esther.html" role="button">Esther Wong &raquo;</a>
+	    </div>
+	    <div class="prev-page">
+		  <a class="btn btn-outline-info btn-lg" href="bargavi.html" role="button">&laquo; Bargavi Chandramouli</a>
+		</div>
       </div> 
 
     </main>
 
-    <footer class="blockquote-footer">
+    <footer class="blockquote-footer" style="clear:both">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
