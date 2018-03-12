@@ -15,6 +15,7 @@ footer p {
 
 .jumbotron {
   border-radius:.1rem;
+  background-image:url("../images/cover.jpg");
 }
 
 /* Used to centre images next to each other on pages */
@@ -32,9 +33,32 @@ footer p {
   font-style: italic;
   font-size: 14px;
   text-align: center;
+  font-color:#AAA;
 }
 
 table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.next-page {
+  float:right;
+  margin-top:1rem;
+  overflow:auto;
+}
+
+.prev-page {
+  float:left;
+  margin-top:1rem;
+  overflow:auto;
+}
+
+.references {
+  font-size: 10px;
+}
+
+.blockquote-footer {
+  margin-top:6rem;
+  background-image: url("../images/cover.jpg");
+  background-color:#EEE;
 }

@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/stylesheet.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -27,19 +28,19 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="landingPage.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="renderConcepts.html">Geometry and Rendering Concepts</a>
           </li>
 		  <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+            <a class="nav-link dropdown-toggle active" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
+			  <a class="dropdown-item" href="otherModels.html">Basic Models (Lambertian, Phong..)</a>
               <a class="dropdown-item" href="cookTorranceModel.html">Cook-Torrance Model</a>
-              <a class="dropdown-item" href="wardsModel.html">Ward's Model</a>
+              <a class="dropdown-item active" href="wardsModel.html">Ward's Model</a>
               <a class="dropdown-item" href="schlicksModel.html">Schlick's Model</a>
-			  <a class="dropdown-item" href="otherModels.html">Other Models (Lambertian, Phong..)</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -60,7 +61,7 @@
 
     <main role="main">
 
-      <div class="jumbotron" style="background:url(images/cover.jpg)">
+      <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Ward's Model</h1>
         </div>
@@ -163,15 +164,10 @@
 		</p>
 		<p>Additionally, there are still many materials which did not fit the BRDF defined by Ward, as his model does not account for many real-world reflectance properties, including Fresnel effects, specular spikes, and off-specular peaks [7]. Some of these are fulfilled by more complex models, such as the HTSG (He, Torrance, Sillion and Greenberg) BRDF, which have been verified through experiments for a wider range of materials. However, the usefulness of such models is largely limited by the computational complexity of implementing them.
 		</p>
-
-      </div> 
-
-	  <div class="container">
-      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">References  &#9662; </button>
-        <div id="demo" class="collapse">
-          <!-- Add your references here-->
+		<p class="lead" style="font-size: 15px">References:</p>
+		<p class="references">
 		  <!-- https://books.google.co.uk/books?id=a9I4HHu79xcC&pg=PA76&lpg=PA76&dq=ward+reflectance+model&source=bl&ots=2ZFNN5sW4y&sig=j8WTIYQJEdl-J47ZV8p3DerOPew&hl=en&sa=X&ved=0ahUKEwi49LGn1N3ZAhWCD8AKHT9LC-44ChDoAQhkMAk#v=onepage&q=ward%20reflectance%20model&f=false -->
-          <br/>[1] J. Dorsey, H. Rushmeier and F. Sillion, <i>Digital Modeling of Material Appearance</i>. San Francisco: Morgan Kaufmann Publishers Inc, 2008.
+          [1] J. Dorsey, H. Rushmeier and F. Sillion, <i>Digital Modeling of Material Appearance</i>. San Francisco: Morgan Kaufmann Publishers Inc, 2008.
 		  <!-- https://www.graphics.cornell.edu/~bjw/wardnotes.pdf -->
           <br/>[2] B. Walter, "Notes on the Ward BRDF," Cornell Program of Computer Graphics., Cornell Univ., New York, Tech. Rep. PCG-05-06, 2005.
 		  <!-- https://cseweb.ucsd.edu/~ravir/6998/papers/p265-ward.pdf -->
@@ -188,11 +184,18 @@
 		  <br/>[8] Scratchapixel. <i>The Phong Model, Introduction to the Concepts of Shader, Reflection Models and BRDF</i> [Online]. Available: https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF.
 		  <br/>[9] T. Ize. <i>Anisotropic Ward BRDF</i> [Online]. Available: http://www.cs.utah.edu/~thiago/cs7650/hw6/index.html.
 		  <br/>[10] M. Panknin. (2011, Dec. 20). <i>Metal Shading - Ward's Anisotropic Reflectance Model in Unity3D</i> [Online]. Available: http://blog.mpanknin.de/?p=769.
+        </p>
+	    <div class="next-page">
+	     <a class="btn btn-outline-info btn-lg" href="schlicksModel.html" role="button">Schlick's Model &raquo;</a>
+	   </div>
+	   <div class="prev-page">
+		  <a class="btn btn-outline-info btn-lg" href="cookTorranceModel.html" role="button">&laquo; Cook-Torrance Model</a>
+		</div>
       </div>
 
     </main>
 
-    <footer class="blockquote-footer">
+    <footer class="blockquote-footer" style="clear:both">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
