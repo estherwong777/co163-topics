@@ -76,23 +76,23 @@
 		<img class="centered-image" src="images/wardExample2.png" width="400"> <!--http://blog.mpanknin.de/?p=769 -->
 		</p>
 	    <div class="caption">
-		  <p>Figure 1: Implementation of Ward's anisotropic BRDF [9]. 
+		  <p>Figure 1: Implementation of Ward's anisotropic BRDF [9].
 		  <br/>Figure 2: Illumination shading based on Ward's paper [10].</p>
 		</div>
 		</div>
 		<p>Ward's model aimed "not to present the ultimate mathematical model of reflectance" [3, p. 1], instead aiming to create one which fit measured reflectance data accurately, whilst maintaining mathematical simplicity, allowing faster rendering and implementation. Ward defined both an isotropic and anisotropic model. However, as we want to focus on applying his model to scratched metals, we will explore his anisotropic model, which allows the rendering of anisotropic effects such as scratches in the surface of the metal, the direction of which combined with the viewing angle around the normal to the surface can change the surface appearance.
 		</p>
 
-		<p>As this model is used to model anisotropic reflection, three axes must be defined: we define the z-axis as the same as the normal vector from that point on the surface, whilst the x and y axes are tangential to the surface in perpendicular directions to each axis. 
+		<p>As this model is used to model anisotropic reflection, three axes must be defined: we define the z-axis as the same as the normal vector from that point on the surface, whilst the x and y axes are tangential to the surface in perpendicular directions to each axis.
 		</p>
-		
-		<p>The Ward BRDF is defined by two components: a diffuse reflection term and a specular reflection term. The diffuse reflection is modelled by <i>&rho;<sub>d</sub></i>, which represents the diffuse reflectance, and the constant <i>&#960</i>, and is derived from <a href="otherModels.html">Lambertian's model</a> of diffuse reflectance. Our BRDF so far can be written as:
+
+		<p>The Ward BRDF is defined by two components: a diffuse reflection term and a specular reflection term. The diffuse reflection is modelled by <i>&rho;<sub>d</sub></i>, which represents the diffuse reflectance, and the constant <i>&#960;</i>, and is derived from <a href="otherModels.html">Lambertian's model</a> of diffuse reflectance. Our BRDF so far can be written as:
 		</p>
-		<p><img src="images/latex/wardEqnPt1.svg" style="display:block; margin-left:auto; margin-right:auto"></p>
+		<p><img src="images/latex/wardEqnPt1.svg" height="45" style="display:block; margin-left:auto; margin-right:auto"></p>
 		<p>where <i>I<sub>s</sub></i> is equal to the specular reflection term, which will be defined.
 		</p>
-		
-		<p>The specular reflection term is more complex, and to help to understand the three constants defined in the equation, we can look at the concept of specular lobes. Lobes refer to the shape of the specular reflection formed by light reflected off the surface of an object, which forms a lobe shape distributed normally about the ideal specular direction with standard deviations of <img src="images/latex/alphaX.svg" width="17" height="17"> in the <i>x</i> direction and <img src="images/latex/alphaY.svg" width="17" height="17"> in the <i>y</i> direction [2], [3], [7]. On mirror-like surfaces, the width of the lobe is thinner, creating a specular reflection covering a smaller area. Conversely, on rough surfaces, the width of the lobe is larger, with the distribution of light intensity centred around the angle of reflection [8], due to the many microfacets within the surface. While the width of the lobe represents the area covered by the specular reflection, the magnitude of the lobe represents the intensity of light at that direction. 
+
+		<p>The specular reflection term is more complex, and to help to understand the three constants defined in the equation, we can look at the concept of specular lobes. Lobes refer to the shape of the specular reflection formed by light reflected off the surface of an object, which forms a lobe shape distributed normally about the ideal specular direction with standard deviations of <img src="images/latex/alphaX.svg" width="17" height="17"> in the <i>x</i> direction and <img src="images/latex/alphaY.svg" width="17" height="17"> in the <i>y</i> direction [2], [3], [7]. On mirror-like surfaces, the width of the lobe is thinner, creating a specular reflection covering a smaller area. Conversely, on rough surfaces, the width of the lobe is larger, with the distribution of light intensity centred around the angle of reflection [8], due to the many microfacets within the surface. While the width of the lobe represents the area covered by the specular reflection, the magnitude of the lobe represents the intensity of light at that direction.
 		</p>
 		<p>
 		<img src="images/specularLobe.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height:40%">
@@ -118,12 +118,12 @@
         </ul>
 		<p>The visibility term is then formed by:
 		</p>
-		<p><img src="images/latex/wardVisibilityTerm.svg" style="display:block; margin-left:auto; margin-right: auto"></p>
+		<p><img src="images/latex/wardVisibilityTerm.svg" height="50" style="display:block; margin-left:auto; margin-right: auto"></p>
 
 		<p>The rest of the equation uses parameters defined by the following angles:
 		</p>
 		<ul>
-		  <li><img src="images/latex/thetaH.svg" width="20" height="20"> - angle between half vector and surface normal 
+		  <li><img src="images/latex/thetaH.svg" width="20" height="20"> - angle between half vector and surface normal
 		  <li><img src="images/latex/phiH.svg" width="20" height="20"> - azimuthal angle of half vector
         </ul>
 		<p>where the half-angle vector <img src="images/latex/unitH.svg" width="17" height="17"> is a unit vector which bisects the incident direction of light and reflected direction, and is equal to the normal vector of a surface which perfectly reflects light from the light soure to the viewer.
@@ -132,13 +132,13 @@
 		<div class="caption"><p>Figure 4: Diagram depicting the various angles and vectors relevant to Ward's model.</p></div>
 
 		<p>Ward's BRDF equation as described so far, without normalisation, is as follows:<p>
-		<p><img src="images/latex/wardEqnNoNormalisation.svg" style="display:block; margin-right:auto; margin-left:auto"></p>
+		<p><img src="images/latex/wardEqnNoNormalisation.svg" height="70" style="display:block; margin-right:auto; margin-left:auto"></p>
 
 		<p>Lastly, Ward's model uses an approximate normalisation term, <img src="images/latex/wardNormalisationTerm.svg" width="50" height="30">, which ensures the BRDF is energy-conserving [1]. As <img src="images/latex/rhoD.svg" width="18" height="18"> + <img src="images/latex/rhoS.svg" width="18" height="18"> is equal to the fraction of total incident light reflected by the surface, the normalisation term is defined such that <img src="images/latex/rhoD.svg" width="18" height="18"> + <img src="images/latex/rhoS.svg" width="18" height="18"> <i>&le; 1</i> [7]. This normalisation term has the effect of reducing the magnitude of the lobe (specular reflectance) as the width of the lobe increases, ensuring energy is conserved. The final BRDF is then produced [2], [3]:
 		</p>
 
 		<p>
-		<img src="images/latex/wardEqn.svg" style="display:block; margin-left:auto; margin-right:auto">
+		<img src="images/latex/wardEqn.svg" height="70" style="display:block; margin-left:auto; margin-right:auto">
 		</p>
 
 		<p>Normally the constants <img src="images/latex/alphaX.svg" width="18" height="18"> and <img src="images/latex/alphaY.svg" width="18" height="18"> for the surface slope are set by the user or obtained by fitting measured BRDF, instead of measuring the object surface [1].
@@ -146,16 +146,16 @@
 
 		<p>Ward's original paper also provided an approximation to his BRDF expressing the angles as the results of their scalar dot product, which is intended to be computationally cheaper. It can be written as follows [3], [6]:
 		</p>
-		<p><img src="images/latex/wardEqnApproximation.svg" style="display:block; margin-left:auto; margin-right:auto"></p>
+		<p><img src="images/latex/wardEqnApproximation.svg" height="80" style="display:block; margin-left:auto; margin-right:auto"></p>
 
 		<p class="lead">Advantages of Ward's Model</p>
 		<p>Ward's model overcomes the main issues with Phong's model, ensuring the reciprocity and energy-conserving features of a BRDF are maintained [3]. Additionally, each constant parameter in the model corresponds to a physical meaning, as Ward intended. The advantage of this is that the values for these parameters can be set independent of measured data if necessary to provide a valid BRDF.
         </p>
 		<p>When Ward tested his model and its rendering, he found that it accurately fit a wide variety of materials including metals with different textures such as brushed aluminium, rolled brass and rolled aluminium [3].
 		</p>
-		<p>Ward's model is also fairly fast to use. Table 1 shows the relative speed of several reflectance models for a variety of surfaces, measured in terms of the time taken to model ideal specular and diffuse reflectance. Ward's model has a relative cost of 7.9 cycles, in comparison with the Cook-Torrance model, which has a relative cost of 16.9. 
+		<p>Ward's model is also fairly fast to use. Table 1 shows the relative speed of several reflectance models for a variety of surfaces, measured in terms of the time taken to model ideal specular and diffuse reflectance. Ward's model has a relative cost of 7.9 cycles, in comparison with the Cook-Torrance model, which has a relative cost of 16.9.
 		</p>
-		
+
 		<div class="caption"><p>Table 1: Table showing relative cost of various BRDF models [4].</p></div>
 		<p><img src="images/modelSpeedComparison.png" style="display:block; margin-left:auto; margin-right:auto"></p>
 
