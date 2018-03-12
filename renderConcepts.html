@@ -55,6 +55,10 @@
 		    <a class="nav-link" href="tryYourself.html">Try It Yourself!</a>
           </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
     </nav>
 
@@ -67,10 +71,9 @@
       </div>
 
 	  <!-- Write your page content here -->
-
     <div class="container">
       <h1 class="mt-5">Reflective aspect of modelling</h1>
-	    <p class="lead"><b>What is a BRDF? (Bidirectional reflectance distribution function)</b></p>
+	    <p class="lead"><b>What is a BRDF?</b></p>
 	    <p> A BRDF is a function that defines the amount of light reflected in the view direction for a given incident and
         outgoing light direction. These directions are taken in a co-ordinate system where the surface normal (n) acts as the z-axis. </p>
       <p> The BRDF formal definition is as follows (first defined by Fred Nicodemus)[1] : </p>
@@ -83,14 +86,14 @@
             </li>
          <li> &Theta;<sub>i</sub> is the angle between w<sub>i</sub> and n
             </li>
-         <li> &omega;<sub>i</sub> is the direction of the incident ray
+         <li> w<sub>i</sub> is the direction of the incident ray
             </li>
-        <li> &omega;<sub>r</sub> is the direction of the reflected ray
+        <li> w<sub>r</sub> is the direction of the reflected ray
             </li>
       </ul>
 
       <img src="images/brdf.png" alt="BRDF diagram" style="display:block; margin-left:auto; margin-right:auto">
-      <div class="caption"><p>Figure 1.1 : Diagram showing vectors used in the BRDF definition [3]</p></div>
+      <p><center>Figure 2.1 : Diagram showing vectors used in the BRDF definition [3]</center></p>
 
 		 <p>Many rendering models like Cook-Torrance, are examples of BRDFs. Many BRDFs have
        been proposed other the years: some are designed to model a specific type of material.
@@ -102,8 +105,8 @@
        <li>BRDF is a positive function, meaning that for all define inputs of the function,
          the output is positive.
          </li>
-       <li>BRDF is reciprocal. In other words, BRDF(&omega;<sub>i</sub>,ω<sub>r</sub>) = BRDF(&omega;<sub>r</sub>,ω<sub>i</sub>)
-         if you swap the incoming and outgoing direction in the function, the function returns the same result.
+       <li>BRDF is reciprocal. In other words, BRDF(ω<sub>i</sub>,ω<sub>r</sub>) = BRDF(ω<sub>r</sub>,ω<sub>i</sub>) if you swap
+         the incoming and outgoing direction in the function, the function returns the same result.
          </li>
        <li>Finally, a BRDF is energy conserving. This means that the BRDF can not create more light t
          han it receives. This is because an object cannot reflect more light than the amount of light
@@ -121,7 +124,7 @@
           but they use the colors to create highlights and shadows that would be present if there were more geometry. </p>
 
       <img src="images/normalmap.jpg" alt="normal map" style="display:block; margin-left:auto; margin-right:auto">
-      <div class="caption"><p>Figure 1.2 : Example of a normal map [4]</p></div>
+      <p><center>Figure 2.2 : Example of a normal map [4]</center></p>
 
       <p class="lead"><b>The use of Fresnel's equations</b></p>
         <p> Fresnel's equations are used to render transparent objects which both refract and reflect light. Metals are mostly reflective,
@@ -130,27 +133,28 @@
           we use these two equations to calculate the ratio of each of the two waves.[7]</p>
         <ul>
           <li> n<sub>1</sub> represents the refractive index of the medium the ray is travelling from.
-            </li>
           <li> n<sub>2</sub> represents the refractive index of the material the ray is incident on.
-            </li>
+
           <li>&Theta;<sub>i</sub> and &Theta;<sub>r</sub> are the angles that the incident, and reflected ray make to
             the normal of the surface respectively.
-            </li>
+          <li> Z<sub>1</sub> and Z<sub>2</sub> represents the ratio of the electric field strength to the magnetic field strength of the two media.
+          <li> μ1 and μ2 are the magnetic permeability of the two materials (ability to form a magnetiic field within itself)
+          <li> ε1 and ε2 are the electric permeability of the two materials at the frequency of the incoming light rays.
+
         </ul>
         <br/>
-
-        <p><center><img src="images/frensel.png" width="400" style="display:block; margin-left:auto; margin-right:auto"></center></p>
-        <div class="caption"><p>Figure 1.3 : Frensel's equation for both parrallel and perpendicular light rays</p></div>
-
+        <p><center><img src="images/rpcond.png" width="450" style="display:block; margin-left:auto; margin-right:auto"></center></p>
+        <p><center><img src="images/rscond.png" width="450" style="display:block; margin-left:auto; margin-right:auto"></center></p>
+        <p class="caption">Figure 2.3 : Frensel's equation for both parallel and perpendicular rays</p>
         <br/>
 
-        <p><center><img src="images/frenselavg.png" width="330" style="display:block; margin-left:auto; margin-right:auto"></center></p>
-        <div class="caption"><p>Figure 1.4 : Averaging the two rays</p></div>
+        <p><center><img src="images/frenselavg.png" width="150" style="display:block; margin-left:auto; margin-right:auto"></center></p>
+        <p class="caption">Figure 2.4 : Averaging the two rays</p>
+        <br/>
 
-        <p>By averaging these two computed formulas, we get a ratio F<sub>r</sub> of the reflected light. In other words,
-          F<sub>r</sub> tells us how effective a surface of a material is at reflecting light.
+        <p>By averaging these two computed formulas, we get a ratio R of the reflected light. In other words,
+          R tells us how effective a surface of a material is at reflecting light.
         </p>
-
 
       <p class="lead"><b>Introduction to microfacets</b></p>
       <p><b>Diffuse reflection</b>: When light that is incident on a surface scatters at various angles rather than just one (specular reflection).</p>
@@ -161,13 +165,13 @@
       <p><b>Specular highlights</b>: bright spot of light that appears on shiny objects when illuminated </p>
     </br>
       <p><img src="images/specular.png" alt="specular" width="650" style="display:block; margin-left:auto; margin-right:auto"></p>
-      <div class="caption"><p>Figure 1.5 : Spheres showing specular and non-specular effects [5]</p></div>
+      <p><center>Figure 2.5 : Spheres showing specular and non-specular effects [5]</center></p>
 
       <p> The above image shows the effects of microfacets in metal reflections. The leftmost sphere is
         specular, but the ones near the right contain microfacets which blurr the specular highlights.</p>
       </br>
       <p><img src="images/diffusevspec.png" style="display:block; margin-left:auto; margin-right:auto" width="650"></p>
-      <div class="caption"><p>Figure 1.6 : Diffuse vs. Specular reflections [9]</p></div>
+      <p><center>Figure 2.6 : Diffuse vs. Specular reflections [9]</center></p>
       </br>
 
       <p>Many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets and
@@ -178,7 +182,7 @@
         Eg. <a href="cookTorranceModel.html" style="display:block; margin-left:auto; margin-right:auto">Cook-Torrance model</a></p>
 
        <p><img src="images/microfacet.png" alt="microfacet" style="display:block; margin-left:auto; margin-right:auto"></p>
-       <div class="caption"><p>Figure 1.7 : Reflections are spread out over many angles due to orientation of microfacets [6]</p></div>
+       <p><center>Figure 2.7 : Reflections are spread out over many angles due to orientation of microfacets [6]</center></p>
        <br/>
       </div>
 
@@ -191,14 +195,14 @@
         <p> However, before we are able to generate such scratch geometries, there has been
           many tests that involve the measurement of real-world scratches. This allows us to
           obtain a physically correct behaviour for rendering these scratches. Measurements
-          can be accomplished with the Hommelwerke Hommel-Tester T2000 (shown in figure 2.1).
+          can be accomplished with the Hommelwerke Hommel-Tester T2000 (shown in the figure below).
           This device allows the testing of the various parameters that determine the scratch
           geometry such as the force applied by the tool, and the shape of the tool.  </p>
         <p> Based upon the results of real-world measurements, we will be able to build an
           analytical model that is flexible and to avoid using empirical methods in the future. </p>
 
-        <img src="images/hommelwerke_tool.png" alt="Hommelwerke Tool" style="display:block; margin-left:auto; margin-right:auto" width="60%">
-        <cap> Figure 2.1: Hommelwerke Hommel-Tester T2000 [10]</cap>
+        <img src="images/hommelwerke_tool.png" alt="Hommelwerke Tool" width="60%">
+        <p> Hommelwerke Hommel-Tester T2000 from: ....</p>
 
         <p> When analysing real-world scratches, we are going to focus on two geometries: </p>
 
@@ -212,11 +216,11 @@
         <p class="lead"><b>Scratch profile</b></p>
 
         <p> The cross-section geometry of a scratch is composed of a groove (or trough)
-            and two peaks (as shown in figure 2.2). </p>
+            and two peaks (as shown in the image below). </p>
         <ul>
           <li> The groove is due to the penetration of the tool into the material. </p>
           <li> The peak is due to the flow and pile-up of material during penetration
-            of the tool into the material. [10] </p>
+            of the tool into the material. </p>
         </ul>
 
         <p> The shape of the groove and the internal zones of the peaks are dependent
@@ -224,43 +228,21 @@
           is direct as metals have no significant shape recovery after a scratch
           (i.e. the shape of the groove will closely resemble the shape of the scratching tool). </p>
 
-        <img src="images/scratchprofile.png" alt="Scratch Profile Diagram" style="display:block; margin-left:auto; margin-right:auto" width="50%">
-        <p align="middle"> Figure 2.2: Cross section geometry of a scratch</p>
+        <img src="images/scratchprofile.png" alt="Scratch Profile Diagram" width="50%">
+        <p> Cross section geometry of a scratch (original)</p>
 
         <p> For mathematical simplicity, we are going to assume that there is no loss of material
           (i.e. the sum of areas of the peak is equal to the area of the groove) and
           that the two peaks have equal areas. </p>
         <p> The depth, d, of the scratch is the depth of the groove from the surface baseline, p.
           It is found to be directly related to the force applied with the tool and the material
-          properties of the object, especially hardness. From the measurements obtained by
-        the scratch tester, a function is derived that relates the depth of penetration, d,
-       with the applied force, F<sub>N</sub>, and hardness of material, H<sub>V</sub>. [11]</p>
-       <img src="images/latex2/depth_eq.png" style="display:block; margin-left:auto; margin-right:auto" width="300">
-        <p> From the figure, we can see that there are two angles &alpha; and &beta;. This can be measured
+          properties of the object, especially hardness. </p>
+        <p> From the figure, we can see that there are two angles ALPHA and BETA. This can be measured
           from the cross sectional geometry generated. By knowing that the sum of the areas of the two
           peaks is equal to the area, A, of the groove, with basic trigonometry we are able to find a
-          relation between h, A, &alpha; and &beta;. [11] </p>
-        <img src="images/latex2/heightandangles.png" style="display:block; margin-left:auto; margin-right:auto" width="200">
-        <div class="container">
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#proof">Proof &#9662; </button>
-            <div id="proof" class="collapse">
-              <!--- Add your references here--->
-              <img src="images/peak.png" width="300" style="display:block; margin-left:auto; margin-right:auto" width="200">
-              <p align="middle"><i> close up of peak </i></p>
-              <br/> <img src="images/latex2/w1.png" height="30"> <br/>
-              <br/> <img src="images/latex2/w2.png" height="30"> <br/>
-              <br/> <img src="images/latex2/Ap.png" height="50"> <br/>
-              <br/> <img src="images/latex2/A.png" height="30"> <br/>
-              <br/> <img src="images/latex2/heightandangles.png" height="75"> <br/> <br/>
-              <ul>
-                <li> w<sub>1</sub> - first part of triangle base
-                <li> w<sub>2</sub> - second part of triangle base
-                <li> A<sub>p</sub> - area of peak
-                <li> A - area of groove
-              </ul>
-        </div>
+          relation between h, A, ALPHA and BETA. </p>
+        <p> INSERT EQ HERE </p>
 
-        <p></p>
         <p class="lead"><b>Trajectory of scratches</b></p>
         <p> The location of the scratches is also needed to fully characterise the scratches. To do this,
           a 2D texture mapping technique can be used. The picture shown below is essentially a two-colour map.
@@ -268,8 +250,8 @@
           the non-scratched surfaces while the lighter colour represents the scratches. This information
           is used to change the BRDF at that point. </p>
 
-        <img src="images/2dtexturemapping.png" alt="2D Texture Mapping" style="display:block; margin-left:auto; margin-right:auto" width="50%">
-        <p align="middle"> Figure 2.3 : 2D texture mapping [10]</p>
+        <img src="images/2dtexturemapping.png" alt="2D Texture Mapping" width="50%">
+        <p> 2D texture mapping from: ...</p>
 
         <p> A complete description of the geometry of the surface is important in determining the BRDF,
           which is used by the computer to determine how light is reflected on every point on the surface. </p>
@@ -290,8 +272,6 @@
             <br/>[7] "Reflection, Refraction and Fresnel", Introduction to Shading. .
             <br/>[8] "Specular vs. Diffuse Reflection", Physicsclassroom.com. [Online]. Available: http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection. [Accessed: 09- Mar- 2018].
             <br/>[9] The Physics Classroom, Comparison of specular and diffuse reflections. .
-            <br/>[10] S. Mérillou, J. M. Dischler, and D. Ghazanfarpour, “Surface scratches: Measuring, modeling and rendering,” Vis. Comput., vol. 17, no. 1, pp. 30–45, 2001.
-            <br/>[11] C. Bosch, X. Pueyo, S. Mérillou, and D. Ghazanfarpour, “A physically-based model for rendering realistic scratches,” Comput. Graph. Forum, vol. 23, no. 3 SPEC. ISS., pp. 361–370, 2004.
       </div>
 
     </main>
