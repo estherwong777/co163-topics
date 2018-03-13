@@ -32,7 +32,7 @@
           </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="introPage.html">Introduction</a>
-		  </li>	
+		  </li>
           <li class="nav-item">
             <a class="nav-link" href="renderConcepts.html">Geometry and Rendering Concepts</a>
           </li>
@@ -74,12 +74,36 @@
 	  <div class="container">
 	    <p class="lead">Schlick's approximation - created by Christophe Schlick in 1994</p>
 	    <p> This is a formula for approximating the Fresnel term of a surface. This determines the amount of reflection happening at
-        each microfacet, and also ultimately affects how the object rendering looks. The formula is as follows:
+        each microfacet, and also ultimately affects how the object rendering looks. The formula is as follows [1] :
 		</p><br/>
     <p><center><img src="images/schlick.png" width="30%"></center></p><br/>
 
-    <p>The term F(&Theta;) represents the Fresnel term for a light ray at incident angle &Theta;. The term F<sub>0</sub> represents the
-      Fresnal term at the normal indicidence on the surface. </p>
+    <p>
+      <ul>
+      <li>The term F(&Theta;) represents the Fresnel term for a light ray at incident angle &Theta;.
+      <li>The angle &Theta; can also be expressed as the dot product of N and V, where N is the normal of the
+        interface between the two media, and V is the direction of the incident light.
+      <li>The term F<sub>0</sub> represents the Fresnal term at the normal indicidence on the surface.
+      </ul>
+    </p>
+      <br/>
+      <p class="lead">Schlick's application to rendering scratched metals</p>
+      <p> When modelling scratched metals, we must consider the micro-facets of the scratch
+        and how light reflects off them. In practice, Schlick’s approximation is used to calculate this. It offers us a less
+        expensive and still relatively accurate way of computing the Fresnel term. In models with micro-facets, instead of using N to
+         calculate cos(&Theta;),  we use the normal of a micro-facet on the surface. This way, we can clearly model the lighting effect
+         created by the scratch’s micro-geometry. Also, in practice, we get the value of F<sub>0</sub> by repeatedly sampling F(0&deg;)
+         for various real-world materials. </p>
+
+      <p><center><img src="images/fresnelmap.png" width="50%"></center></p>
+      <p class="caption">Figure 1 : Examples of R<sub>F</sub>  (Fresnel reflectance) for various real life materials [2]</p>
+
+    <br/>
+    <p class="lead" style="font-size:15px">References:</p>
+    <p class="references">
+      [1] C. Schlick, "An Inexpensive BDRF Model for Physically based Rendering", in Computer Graphics Forum, 1994.
+      <br/>[2 ]T. Möller, E. Haines and N. Hoffman, Real-time rendering. Wellesley, Mass.: Peters.
+    </p>
 
 	  <div class="next-page">
 	     <a class="btn btn-outline-info btn-lg" href="#.html" role="button">Advanced Model &raquo;</a>
@@ -87,8 +111,6 @@
 	  <div class="prev-page">
 		 <a class="btn btn-outline-info btn-lg" href="wardsModel.html" role="button">&laquo; Ward's Model</a>
 	  </div>
-
-      </div>
 
     </main>
 
