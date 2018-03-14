@@ -32,7 +32,7 @@
           </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="introPage.html">Introduction</a>
-		  </li>	
+		  </li>
           <li class="nav-item">
             <a class="nav-link" href="renderConcepts.html">Geometry and Rendering Concepts</a>
           </li>
@@ -88,18 +88,20 @@
         </ul>
 
 		For diffuse reflection, the radiance at a point <i>x</i>, in a direction away from the surface is equal to the irradiance from the source multiplied by the BRDF. Radiance is proportional to the radiosity at <i>x</i>, which is proportional to the radiosity at <i>x</i>. The albedo, <i>&rho;<sub>d</sub></i> describes the reflectivity of a surface, or the fraction of irradiance reflected as radiosity. This is defined by:
-		</p>
+  </p><br/>
 		<p><img src="images/latex/albedoEqn.svg" style="display:block; margin-left:auto; margin-right:auto;"></p>
+  </br>
 
 		<p>To find the BRDF, we therefore calculate the radiance divided by the irradiance. Lambertian diffuse reflectance is therefore modelled using the following constant:
 		</p>
+    <br/>
 		<p><img src="images/latex/lambertianEqn.svg" style="display:block; margin-left: auto; margin-right: auto"></p>
     <br/><br/>
     <p class="lead">Lambert's Cosine Law</p>
     <p> All Lambertian surfaces obey this law. This law states that the radiant intensity observed from an ideally diffusely reflecting
       surface is directly proportional to the cosine of angle &Theta;, which is between the surface normal and the observer’s line of sight. The
     law is as follows:</p>
-      <p><center><img src="images/cosinerule.png" alt="cosine rule" width="25%"></center></p>
+      <p><center><img src="images/cosinerule.png" alt="cosine rule" width="200"></center></p>
 
       <p>Equation Variables [10]:
         <ul>
@@ -189,9 +191,9 @@
 		  <li><img src="images/latex/latexN.svg" width="15" height="15"> - specular exponent/shininess - constant which models specular reflectance for a material
         </ul>
 		<p>Phong observed that the shinier the surface, the smaller the specular highlight, and so the smaller the range of <img src="images/latex/alpha.svg" width="10" height="20"> over which it could be observed. The specular reflectance is proportional to <img src="images/latex/cosAlpha.svg" width="35" height="20">, and so using the scalar dot product and unit direction vectors for V and R again, we can calculate the intensity of specular reflectance, giving the final BRDF [1], [3], [4]:
-		  <br><img src="images/latex/phongsEqnPt2.svg" style="display:block; margin-left:auto; margin-right:auto">
+		  <p><img src="images/latex/phongsEqnPt2.svg" style="display:block; margin-left:auto; margin-right:auto"></p>
 		</p>
-
+    <br/>
 		<p>If there are multiple light sources, the BRDF can be altered so we sum the non-ambient components for all lights [4].
 		</p>
 
@@ -212,7 +214,7 @@
 		<p class="lead">Additional Notes</p>
 		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect [1], [2], where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
 		</p>
-     
+
 	    <p class="lead" style="font-size:15px">References:</p>
 		<p class="references">
           <!-- Add your references here-->
