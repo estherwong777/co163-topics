@@ -90,7 +90,7 @@ mesostructure models. Displacement mapping algorithms take sample points and dis
 height map. The sample points can be either the vertices of the original or tessellated mesh (per-vertex displacement mapping) or the points corresponding to the texel centers
 (per-pixel displacement mapping). In case of per-vertex displacement mapping the modified geometry goes through the rendering pipeline. However, in per-pixel displacement mapping, surface details are added when color texturing takes
 place. The idea of combining displacement mapping with texture lookups was proposed by Patterson, who called his method as inverse displacement mapping [3]</p>
-    <p align="center"><img src="images/macro1.png" alt="The basic idea of displacement mapping"></img></p>
+    <p align="center"><img src="images/macro1.jpg" height=180 width=700 alt="The basic idea of displacement mapping"></img></p>
     <div class="caption"> <p> Figure 1. The basic idea of displacement mapping </p></div>
     <p>Displacement mapping techniques allow the simulation of different kinds of surface details. Some of them are based on generating additional geometry, while others simulate detail by modifying surface normals or performing ray tracing on height maps. These techniques are mostly suited for big surface features or low-frequency detail. Otherwise, they require high resolution maps and good anti aliasing methods that can be very time consuming, especially as the distance to the viewer increases. Other approaches have modeled grooves by modifying the object geometry for interactive sculpting purposes. [2]</p>
     <h1> Bidirectional Texture Function (BTF) </h1>
@@ -98,8 +98,8 @@ place. The idea of combining displacement mapping with texture lookups was propo
 al. 1999). A BTF consists in defining a complete “map of BRDFs”, thus resulting in a dependence on the surface aspect according to viewing direction, incident light direction and position on the
 surface. Dana and Nayar (1999) proposed a correlation model characterizing the spatial relationship among neighboring pixels in an image of a texture and the change of this relationship with the viewing
 direction.[1]</p>
-    <h1> Some proposed models </h1>
-    <h4> 1. Using P-NDF and P-BRDF </h4>
+    <h1> Some proposed models summarised</h1>
+    <h4> 1. Using P-NDF and P-BRDF [6]</h4>
     <p> A method proposed by Yan et al.(2014) models high resolution specular surfaces using normal maps.
       The effect caused by macrogeometry of scratches can be rendered by considering a whole surface patch as seen through a single pixel.
       A P-BRDF is a BRDF integrated over a whole patch P.
@@ -107,14 +107,25 @@ direction.[1]</p>
       Now if we sample gaussian P we get probability distribution of normals on unit disk known as the P-NDF.
       Different pixel footprints over different normal maps leads to different P-NDF shapes. The only thing common to them is that they have sharp features and cannot be approximated by smooth functions.
       Yan et al. developed an algorithm to calculate the P-NDF at a given point.
-      Then all that is needed to shade surfaces is to plug the P-NDF evaluation into a standard micro-facet BRDF.
+      Then all that is needed to shade surfaces is to plug the P-NDF evaluation into a standard micro-facet BRDF, making it a P-BRDF.
+      <p align="center"><img src="images/Yan-equation.jpg" height=100 width=500></img></p>
+      <div class="caption"><p> Figure 2. The term in the yellow box is the NDF evaluation for the given half vector</p></div>
     </p>
-    <h4>2. Using diffraction </h4>
+    <p></p>
+    <h4>2. Using diffraction [4]</h4>
+    <p> Another proposed model involves introducing a wave-optical model to simulate complex iridiscent behaviour of scratches. The steps involved are:
+      <ol>
+        <li> The appearance of worn surfaces is rendered. To this end the scratches within a coherence area is retrieved.</li>
+        <li> The contributions of the induvidual scratches are weighted according to a Gaussian filter. </li>
+        <li> Wave optics is utilised to shade each scratch induvidually and accumulate their contributions coherently.</li>
+      </ol>
+    </p>
+
 
     <p align="center"> <video height=340 width=400 preload="auto" controls>
       <source src="images/a207-wernerTrim.mp4" type="video/mp4">
       </video> </p>
-      <div class="caption"> <p> [1] </p> </div>
+      
     <p class="lead" style="font-size:15px">References:</p>
 		<p class="references">
         <!-- Add your references here-->
@@ -124,6 +135,9 @@ direction.[1]</p>
           <br/> <a name="ref4">[4]  Sebastian Werner, Zdravko Velinov, Wenzel Jakob, and Matthias B. Hullin.
 2017. "Scratch iridescence: Wave-optical rendering of diffractive surface structure." ACM Trans. Graph. 36, 6, Article 207 (November 2017)</a>
           <br/> <a name="ref5">[5] PluralSight: Elliminate Texture Confusion: Bump, Normal and Displacement Maps https://www.pluralsight.com/blog/film-games/bump-normal-and-displacement-maps </a>
+          <br/> <a name="ref6">[6] Ling-Qi Yan, Milos Hasan,Wenzel Jakob, Jason Lawrence, Steve Marschner, Ravi Ramamoorthi "Rendering Glints on High-Resolution Normal-Mapped Specular Surfaces"ACM Transactions on Graphics (TOG) - Proceedings of ACM SIGGRAPH 2014
+Volume 33 Issue 4, July 2014
+Article No. 116 </a>
 		</p>
 		<div class="next-page">
 	      <a class="btn btn-outline-info btn-lg" href="bargavi.html" role="button"> Bargavi Chandramouli &raquo;</a>
