@@ -8,7 +8,7 @@
     <!-- Replace below for new webpage icon -->
 	<link rel="icon" href="#">
 
-    <title>Other Models (Lambertian, Phong..)</title>
+    <title>Basic Models (Lambertian, Phong..)</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Other Models (Lambertian, Phong..)</h1>
+          <h1 class="display-3">Basic Models (Lambertian, Phong..)</h1>
         </div>
       </div>
 
@@ -103,7 +103,7 @@
     law is as follows:</p>
       <p><center><img src="images/cosinerule.png" alt="cosine rule" width="200"></center></p>
 
-      <p>Equation Variables [10]:
+      <p>Equation Variables <a href="#ref1">[10]</a>:
         <ul>
         <li> I<sub>&Theta;</sub> is the intensity of the scattered ray of light at angle &Theta;, where &Theta; is the angle of the scattered ray from the surface normal
         <li> I<sub>n</sub> is the incident light intensity normal to the surface of the material
@@ -112,7 +112,7 @@
 
 
       <p><center><img src="images/lambreflection.png" width="40%"></center></p>
-      <div class="caption"><p>Figure 4 : Diagram showing relationship between Lambertian reflection and Lambert's cosine rule [11]</p></div>
+      <div class="caption"><p>Figure 4 : Diagram showing relationship between Lambertian reflection and Lambert's cosine rule <a href="#ref1">[11]</a></p></div>
       <br/><br/>
       <p class="lead">Mathematical proof that the radiance is the same in any
         viewing direction</p>
@@ -140,15 +140,15 @@
 
         <h1 class="mt-5">Phong Reflection Model</h1>
 	    <p class="lead">This is an early model, the report for which was first published in 1973, with his paper later published in 1975.</p>
-	    <p>The Phong reflection model is an empirical model based on physical observations [6]: in particular, Phong's observations regarding specular reflection and specular highlight. Specular highlights occur on an object where there is a bright spot on the material at a certain viewing angle [3]. For metals, this is especially pronounced, due to its smooth and shiny surface, creating more distinct highlights, and most of the light reflection on metals is composed of specular reflection.
+	    <p>The Phong reflection model is an empirical model based on physical observations <a href="#ref1">[6]</a>: in particular, Phong's observations regarding specular reflection and specular highlight. Specular highlights occur on an object where there is a bright spot on the material at a certain viewing angle <a href="#ref1">[3]</a>. For metals, this is especially pronounced, due to its smooth and shiny surface, creating more distinct highlights, and most of the light reflection on metals is composed of specular reflection.
 
-		<p>From his observations, Phong determined that the specular highlight was smaller and the edges more distinct for shiny surfaces than for more dull surfaces, where the highlight was larger and had a less distinct edge [3].
+		<p>From his observations, Phong determined that the specular highlight was smaller and the edges more distinct for shiny surfaces than for more dull surfaces, where the highlight was larger and had a less distinct edge <a href="#ref1">[3]</a>.
 		</p>
-		<p>In Phong's model, light reflection has three components: specular reflection, diffuse reflection, and ambient reflection, which are all summed to form the final BRDF [5].
+		<p>In Phong's model, light reflection has three components: specular reflection, diffuse reflection, and ambient reflection, which are all summed to form the final BRDF <a href="#ref1">[5]</a>.
 		</p>
 		<p><img src="images/phongVisual.png" style="display:block; margin-left:auto; margin-right:auto"></p> <!-- https://en.wikipedia.org/w/index.php?title=File%3APhong_components_version_4.png -->
 		</p>
-		<div class="caption"><p>Figure 1: Diagram depicting the various components of the Phong reflection model (ambient, diffuse and specular reflectance) [8].</p></div>
+		<div class="caption"><p>Figure 1: Diagram depicting the various components of the Phong reflection model (ambient, diffuse and specular reflectance) <a href="#ref1">[8]</a>.</p></div>
 
 		<p>Diffuse reflection is affected by the texture of the suface of the object, and the effect of it is greater in objects which are dull with rough surfaces, as the microfacets in the surface will reflect light in many directions [4]. Ambient light is equal in all directions, and so all surfaces are illuminated equally by ambient light. For each of these components, a constant coefficient is defined, the value of which is dependent on the incident light and the material:
 		</p>
@@ -157,7 +157,7 @@
 		  <li>k<sub>d</sub> - diffuse reflection coefficient
 		  <li>k<sub>a</sub> - ambient reflection coefficient
 		</ul>
-		<p>In an RGB model, the equation can be used to model the intensity of each colour separately, altering the k<sub>s</sub>, k<sub>d</sub> and k<sub>a</sub> constants depending on the colour [3].
+		<p>In an RGB model, the equation can be used to model the intensity of each colour separately, altering the k<sub>s</sub>, k<sub>d</sub> and k<sub>a</sub> constants depending on the colour <a href="#ref1">[3]</a>.
 		</p>
 		<p>The light in a scene is also broken down into components corresponding to these three properties:
 		</p>
@@ -172,7 +172,7 @@
         <p><img src="images/phongVectors.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height:40%"></p>
 		<div class="caption"><p>Figure 2: Diagram depicting the various vectors relevant to Phong's reflection model.</p></div>
 
-		<p>Considering just the ambient and diffuse reflectance, the ambient reflectance will depend on k<sub>a</sub> and I<sub>a</sub>. As for diffuse reflectance, the reflected intensity is not affected by the direction of the viewer, but depends solely on the direction of the light source with respect to the normal of the surface [4]. Therefore, the diffuse reflectance is proportional to <img src="images/latex/cosTheta.svg" width="35" height="20">, where <img src="images/latex/theta.svg" width="10" height="20"> represents the angle between the normal and the light source. This uses the Lambertian model of diffuse reflectance. Using the scalar dot product and unit direction vectors for the normal and light, we can express the diffuse reflectance if we define the following variables:
+		<p>Considering just the ambient and diffuse reflectance, the ambient reflectance will depend on k<sub>a</sub> and I<sub>a</sub>. As for diffuse reflectance, the reflected intensity is not affected by the direction of the viewer, but depends solely on the direction of the light source with respect to the normal of the surface <a href="#ref1">[4]</a>. Therefore, the diffuse reflectance is proportional to <img src="images/latex/cosTheta.svg" width="35" height="20">, where <img src="images/latex/theta.svg" width="10" height="20"> represents the angle between the normal and the light source. This uses the Lambertian model of diffuse reflectance. Using the scalar dot product and unit direction vectors for the normal and light, we can express the diffuse reflectance if we define the following variables:
 		</p>
 		<ul>
 	      <li><img src="images/latex/unitN.svg" width="20" height="20"> - normal to the surface (unit vector)
@@ -190,52 +190,52 @@
 		  <li><img src="images/latex/unitR.svg" width="20" height="20"> - direction of specular reflectance (unit vector)
 		  <li><img src="images/latex/latexN.svg" width="15" height="15"> - specular exponent/shininess - constant which models specular reflectance for a material
         </ul>
-		<p>Phong observed that the shinier the surface, the smaller the specular highlight, and so the smaller the range of <img src="images/latex/alpha.svg" width="10" height="20"> over which it could be observed. The specular reflectance is proportional to <img src="images/latex/cosAlpha.svg" width="35" height="20">, and so using the scalar dot product and unit direction vectors for V and R again, we can calculate the intensity of specular reflectance, giving the final BRDF [1], [3], [4]:
+		<p>Phong observed that the shinier the surface, the smaller the specular highlight, and so the smaller the range of <img src="images/latex/alpha.svg" width="10" height="20"> over which it could be observed. The specular reflectance is proportional to <img src="images/latex/cosAlpha.svg" width="35" height="20">, and so using the scalar dot product and unit direction vectors for V and R again, we can calculate the intensity of specular reflectance, giving the final BRDF <a href="#ref1">[1]</a>, <a href="#ref1">[3]</a>, <a href="#ref1">[4]</a>:
 		  <p><img src="images/latex/phongsEqnPt2.svg" style="display:block; margin-left:auto; margin-right:auto"></p>
 		</p>
     <br/>
-		<p>If there are multiple light sources, the BRDF can be altered so we sum the non-ambient components for all lights [4].
+		<p>If there are multiple light sources, the BRDF can be altered so we sum the non-ambient components for all lights <a href="#ref1">[4]</a>.
 		</p>
 
 		<p class="lead">Advantages of the Phong model</p>
-		<p>The main advantage of the Phong model is that it is fairly simple to compute, and so provides an efficient way of rendering light reflectance on surfaces, whilst also being relatively simple to implement [5]. This has made it very popular to use. Other models have built on Phong's model, such as the Blinn-Phong model, to speed the computation time.
+		<p>The main advantage of the Phong model is that it is fairly simple to compute, and so provides an efficient way of rendering light reflectance on surfaces, whilst also being relatively simple to implement <a href="#ref1">[5]</a>. This has made it very popular to use. Other models have built on Phong's model, such as the Blinn-Phong model, to speed the computation time.
 		</p>
 
 		<p class="lead">Limitations of the Phong model</p>
-		<p>One problem with using the Phong model to render scratched metals is that it assumes specular highlights are of the same colour as the light source [3], which does not hold true for metals in particular, although it is true for dielectrics [4], [5]. Other more advanced models, such as the <a href="cookTorranceModel.html">Cook-Torrance model</a> do not suffer from this problem, as they take the colour contribution from the surface into account [6], making the Phong model weaker at rendering metals in comparison.
+		<p>One problem with using the Phong model to render scratched metals is that it assumes specular highlights are of the same colour as the light source <a href="#ref1">[3]</a>, which does not hold true for metals in particular, although it is true for dielectrics <a href="#ref1">[4]</a>, <a href="#ref1">[5]</a>. Other more advanced models, such as the <a href="cookTorranceModel.html">Cook-Torrance model</a> do not suffer from this problem, as they take the colour contribution from the surface into account <a href="#ref1">[6]</a>, making the Phong model weaker at rendering metals in comparison.
 		</p>
-        </p>Another issue with the Phong model is that it does not satisfy one of the main BRDF properties, as it is not energy conserving, creating more light than it receives [5]. This means the Phong model is physically incorrect, as it is based on physical observation rather than physics, using Phong's informal observations of light reflectance. For example, the constants <image src="images/latex/latexN.svg" width="13" height="13"> and k<sub>s</sub> which are used to model specular reflectance have no physical meaning, instead being adjusted by the user to achieve the highlight intensity they want.
+        </p>Another issue with the Phong model is that it does not satisfy one of the main BRDF properties, as it is not energy conserving, creating more light than it receives <a href="#ref1">[5]</a>. This means the Phong model is physically incorrect, as it is based on physical observation rather than physics, using Phong's informal observations of light reflectance. For example, the constants <image src="images/latex/latexN.svg" width="13" height="13"> and k<sub>s</sub> which are used to model specular reflectance have no physical meaning, instead being adjusted by the user to achieve the highlight intensity they want.
 		</p>
-		<p>The Phong model also does not satisfy the reciprocal property of a BRDF [7], as the surface is modelled to reflect light in one directly different than in the other, when the angle of incidence and reflected angles are swapped. This is not physically possible, and so means the Phong model is physically incorrect.
+		<p>The Phong model also does not satisfy the reciprocal property of a BRDF <a href="#ref1">[7]</a>, as the surface is modelled to reflect light in one directly different than in the other, when the angle of incidence and reflected angles are swapped. This is not physically possible, and so means the Phong model is physically incorrect.
 		</p>
 		<p><img src="images/specularChangingConstants.png" style="display:block; margin-left:auto; margin-right:auto"></p>
-		<div class="caption"><p>Figure 3: Use of the Phong model to render spheres with varying shininess constants [5].</p></div>
+		<div class="caption"><p>Figure 3: Use of the Phong model to render spheres with varying shininess constants <a href="#ref1">[5]</a> </p></div>
 
 		<p class="lead">Additional Notes</p>
-		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect [1], [2], where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
+		<p>In Phong's paper, he also described a method for rendering polygons using interpolation, known as Phong shading, which produces smoother shading of surfaces, reducing the Mach Band effect <a href="#ref1">[1]</a>, <a href="#ref1">[2]</a>, where the contrast of colour between polygon edges is exaggerated. This technique is still used today in rendering.
 		</p>
 
 	    <p class="lead" style="font-size:15px">References:</p>
 		<p class="references">
           <!-- Add your references here-->
 		  <!-- http://scholar.google.co.uk/scholar_url?url=http://www.dtic.mil/get-tr-doc/pdf%3FAD%3DADA008786&hl=en&sa=X&scisig=AAGBfm3zXrQIRQlgjSyvvvVDslbcZKjlcA&nossl=1&oi=scholarr&ved=0ahUKEwi988608djZAhWCJMAKHfxLAhQQgAMIKCgAMAA -->
-          [1] B. T. Phong, "Illumination for Computer-Generated Images," Comput. Sci. Division., Univ. Utah., Salt Lake City, UT, Tech. Rep. UTEC-CSc-73-129, 1973.
+          <a name="ref1">[1] B. T. Phong, "Illumination for Computer-Generated Images," Comput. Sci. Division., Univ. Utah., Salt Lake City, UT, Tech. Rep. UTEC-CSc-73-129, 1973.</a> Available: <a href="http://scholar.google.co.uk/scholar_url?url=http://www.dtic.mil/get-tr-doc/pdf%3FAD%3DADA008786&hl=en&sa=X&scisig=AAGBfm3zXrQIRQlgjSyvvvVDslbcZKjlcA&nossl=1&oi=scholarr&ved=0ahUKEwi988608djZAhWCJMAKHfxLAhQQgAMIKCgAMAA">here</a>
 		  <!-- http://www.cs.northwestern.edu/~ago820/cs395/Papers/Phong_1975.pdf -->
-          <br/>[2] B. T. Phong, "Illumination for Computer Generated Pictures," <i>Communications of the ACM</i>, vol 18, issue 6, pp. 311-317, June 1975.
+          <br/>[2] B. T. Phong, "Illumination for Computer Generated Pictures," <i>Communications of the ACM</i>, vol 18, issue 6, pp. 311-317, June 1975. Available: <a href="http://www.cs.northwestern.edu/~ago820/cs395/Papers/Phong_1975.pdf">http://www.cs.northwestern.edu/~ago820/cs395/Papers/Phong_1975.pdf</a>
 		  <!-- https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm -->
-          <br/>[3] G. S. Owen. (1999, Sept. 6). <i>Phong Model for Specular Reflection</i> [Online]. Available: https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm.
+          <br/>[3] G. S. Owen. (1999, Sept. 6). <i>Phong Model for Specular Reflection</i> [Online]. Available: <a href="https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm">https://www.siggraph.org/education/materials/HyperGraph/illumin/specular_highlights/phong_model_specular_reflection.htm</a>
 		  <!-- http://slideplayer.com/slide/9298423/ -->
-          <br/>[4] D. Fussell, "http://slideplayer.com/slide/9298423/", Univ. Texas at Austin, 2010.
+          <br/>[4] D. Fussell, <a href="http://slideplayer.com/slide/9298423/">"http://slideplayer.com/slide/9298423/"</a>, Univ. Texas at Austin, 2010.
 		  <!-- https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF -->
-          <br/>[5] Scratchapixel. <i>The Phong Model, Introduction to the Concepts of Shader, Reflection Models and BRDF</i> [Online]. Available: https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF.
+          <br/>[5] Scratchapixel. <i>The Phong Model, Introduction to the Concepts of Shader, Reflection Models and BRDF</i> [Online]. Available: <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF">https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF</a>
 		  <!-- https://www.siggraph.org/education/materials/HyperGraph/illumin/similum0.htm -->
-          <br/>[6] G. S. Owen. (1999, Sept. 6). <i>Local Illumination Models</i> [Online]. Available: https://www.siggraph.org/education/materials/HyperGraph/illumin/similum0.htm.
+          <br/>[6] G. S. Owen. (1999, Sept. 6). <i>Local Illumination Models</i> [Online]. Available: <a href="https://www.siggraph.org/education/materials/HyperGraph/illumin/similum0.htm">https://www.siggraph.org/education/materials/HyperGraph/illumin/similum0.htm</a>
 		  <!-- https://cseweb.ucsd.edu/~ravir/6998/papers/p265-ward.pdf -->
           <br/>[7] G. J. Ward, "Measuring and Modeling Anisotropic Reflection," in Computers Graphics, ACM SIGGRAPH'92 Conference Proceedings, Chicago, IL, 1992, pp.265-272.
-		  <br/>[8] B. Smith. (2006, Aug. 7). <i>File:Phong components version 4.png</i> [Online]. Available: https://commons.wikimedia.org/wiki/File:Phong_components_version_4.png.
+		  <br/>[8] B. Smith. (2006, Aug. 7). <i>File:Phong components version 4.png</i> [Online]. Available: <a href="https://commons.wikimedia.org/wiki/File:Phong_components_version_4.png">https://commons.wikimedia.org/wiki/File:Phong_components_version_4.png</a>
           <!-- lambertian references -->
-          <br/> [9]"What is a Lambertian Surface?", AZoOptics.com, 2014. [Online]. Available: https://www.azooptics.com/Article.aspx?ArticleID=790. [Accessed: 11- Mar- 2018].
-          <br/> [10]"Lambert's (cosine) law", Electropedia.org, 1987. [Online]. Available: http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-04-56. [Accessed: 11- Mar- 2018].
+          <br/> [9]"What is a Lambertian Surface?", AZoOptics.com, 2014. [Online]. Available: <a href="https://www.azooptics.com/Article.aspx?ArticleID=790">https://www.azooptics.com/Article.aspx?ArticleID=790</a>. [Accessed: 11- Mar- 2018].
+          <br/> [10]"Lambert's (cosine) law", Electropedia.org, 1987. [Online]. Available: <a href="http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-04-56">http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-04-56</a>. [Accessed: 11- Mar- 2018].
           <br/> [11]"Photometry for Traffic Engineers", University of South Dakota.
           <br/> [12]C. Mobley, Ocean Optics Web Book. 2014.
 		</p>
