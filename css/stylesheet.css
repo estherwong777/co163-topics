@@ -18,6 +18,13 @@ footer p {
   background-image:url("../images/cover.jpg");
 }
 
+.jumbotroncover {
+  border-radius:.1rem;
+}
+
+
+
+
 /* Used to centre images next to each other on pages */
 #centered-image {
 	text-align:center;
