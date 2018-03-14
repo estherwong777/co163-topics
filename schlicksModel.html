@@ -74,7 +74,7 @@
 	  <div class="container">
 	    <p class="lead">Schlick's approximation - created by Christophe Schlick in 1994</p>
 	    <p> This is a formula for approximating the Fresnel term of a surface. This determines the amount of reflection happening at
-        each microfacet, and also ultimately affects how the object rendering looks. The formula is as follows [1] :
+        each microfacet, and also ultimately affects how the object rendering looks. The formula is as follows <a href="#ref1">[1]</a> :
 		</p><br/>
     <p><center><img src="images/schlick.png" width="30%"></center></p><br/>
 
@@ -96,7 +96,7 @@
          for various real-world materials. </p>
 
       <p><center><img src="images/fresnelmap.png" width="450"></center></p>
-      <p class="caption">Figure 1 : Examples of R<sub>F</sub>  (Fresnel reflectance) for various real life materials [2]</p>
+      <p class="caption">Figure 1 : Examples of R<sub>F</sub>  (Fresnel reflectance) for various real life materials <a href="#ref1">[2]</a></p>
       <p> By observing the graph above, we see that metals generally have a higher reflectance than materials such as diamond,
          glass and water. These Fresnel terms can be used to determine the appearance of surfaces in many rendering applications.
          For example, the three metal renderings below were created by Corona (a rendering software). We see that by altering the Fresnel term, the appearance
@@ -106,11 +106,11 @@
       <p><center><img src="images/egrender1.png" class="img" width="680"></center></p>
       <p><center><img src="images/egrender1a.png" class="img" width="680"></center></p>
       <p><center><img src="images/egrender2.png" class="img" width="640"></center></p>
-      <p class="caption">Figure 2 : Example of how Fresnel terms affect the appearance of metals [3]</p>
+      <p class="caption">Figure 2 : Example of how Fresnel terms affect the appearance of metals <a href="#ref1">[3]</a></p>
     <br/>
     <p class="lead" style="font-size:15px">References:</p>
     <p class="references">
-      [1] C. Schlick, "An Inexpensive BDRF Model for Physically based Rendering", in Computer Graphics Forum, 1994.
+      <a name="ref1">[1] C. Schlick, "An Inexpensive BDRF Model for Physically based Rendering", in Computer Graphics Forum, 1994.</a>
       <br/>[2] T. Möller, E. Haines and N. Hoffman, Real-time rendering. Wellesley, Mass.: Peters.
       <br/>[3] CoronaRenderer, TUTORIAL: Basic Materials Examples. 2016.
     </p>
