@@ -80,7 +80,7 @@
 	    <p class="lead"><b>What is a BRDF?</b></p>
 	    <p> A BRDF is a function that defines the amount of light reflected in the view direction for a given incident and
         outgoing light direction. These directions are taken in a co-ordinate system where the surface normal (n) acts as the z-axis. </p>
-      <p> The BRDF formal definition is as follows (first defined by Fred Nicodemus)[1] : </p>
+      <p> The BRDF formal definition is as follows (first defined by Fred Nicodemus) <a href="#ref1">[1]</a> : </p>
       <img src="images/brdfequation.png" alt="BRDF equation" height="70px" style="display:block; margin-left:auto; margin-right:auto">
       <p> Equation variables </p>
       <ul>
@@ -97,14 +97,14 @@
       </ul>
 
       <p><img src="images/brdf.png" alt="BRDF diagram" width="50%" style="display:block; margin-left:auto; margin-right:auto"></p>
-      <p class="caption"> Figure 1.1 : Diagram showing vectors used in the BRDF definition [3]</p>
+      <p class="caption"> Figure 1.1 : Diagram showing vectors used in the BRDF definition <a href="#ref3">[3]</a></p>
 
 		 <p>Many rendering models like Cook-Torrance, are examples of BRDFs. Many BRDFs have
        been proposed other the years: some are designed to model a specific type of material.
        For example the Oren-Nayar model is suited to model the surface of the moon, which
        does not reflect light like a diffuse surface would. (diffuse surfaces scatter light
        at many angle when incident with one ray).</p>
-     <p> BRDF's have 3 key properties [2] : </p>
+     <p> BRDF's have 3 key properties <a href="#ref1">[2]</a> : </p>
       <ol>
        <li>BRDF is a positive function, meaning that for all define inputs of the function,
          the output is positive.
@@ -128,13 +128,13 @@
           but they use the colors to create highlights and shadows that would be present if there were more geometry. </p>
 
       <p><img src="images/normalmap.jpg" alt="normal map" style="display:block; margin-left:auto; margin-right:auto"></p>
-      <p class="caption">Figure 1.2 : Example of a normal map [4]</p>
+      <p class="caption">Figure 1.2 : Example of a normal map <a href="#ref1">[4]</a></p>
 
       <p class="lead"><b>The use of Fresnel's equations</b></p>
         <p> Fresnel's equations are used to render transparent objects which both refract and reflect light. Metals are mostly reflective,
           while dielectric materials like glass have more refraction than metals. Light is composed of two perpendicular
           waves are called the parallel and the perpendicular polarised light. In order to know the ratio of reflected and refracted light,
-          we use these two equations to calculate the ratio of each of the two waves.[7]</p>
+          we use these two equations to calculate the ratio of each of the two waves.<a href="#ref1">[7]</a></p>
         <ul>
           <li> n<sub>1</sub> represents the refractive index of the medium the ray is travelling from.
           <li> n<sub>2</sub> represents the refractive index of the material the ray is incident on.
@@ -169,24 +169,24 @@
       <p><b>Specular highlights</b>: bright spot of light that appears on shiny objects when illuminated </p>
     </br>
       <p><img src="images/specular.png" alt="specular" width="650" style="display:block; margin-left:auto; margin-right:auto"></p>
-      <p class="caption">Figure 1.5 : Spheres showing specular and non-specular effects [5]</p>
+      <p class="caption">Figure 1.5 : Spheres showing specular and non-specular effects <a href="#ref1">[5]</a></p>
 
       <p> The above image shows the effects of microfacets in metal reflections. The leftmost sphere is
         specular, but the ones near the right contain microfacets which blurr the specular highlights.</p>
       </br>
       <p><img src="images/diffusevspec.png" style="display:block; margin-left:auto; margin-right:auto" width="650"></p>
-      <p class="caption">Figure 1.6 : Diffuse vs. Specular reflections [9]</p>
+      <p class="caption">Figure 1.6 : Diffuse vs. Specular reflections <a href="#ref1">[9]</a></p>
       </br>
 
       <p>Many shiny objects show blurred specular highlights. This can be explained by the existence of microfacets and
         the concept of diffuse reflections. We assume that surfaces contain many tiny facets and are not perfectly smooth.
         Therefore, each individual light ray reaches the material surface at different orientations. Hence,
-        the rays reflect in various directions, creating a diffuse reflection effect. [8] There are many microfacet models which have
+        the rays reflect in various directions, creating a diffuse reflection effect. <a href="#ref1">[8]</a> There are many microfacet models which have
         been very successful at modelling light reflection from rough surfaces.
         (e.g. <a href="cookTorranceModel.html">Cook-Torrance model</a>)</p>
 
        <p><img src="images/microfacet.png" alt="microfacet" style="display:block; margin-left:auto; margin-right:auto"></p>
-       <p class="caption">Figure 1.7 : Reflections are spread out over many angles due to orientation of microfacets [6]</p>
+       <p class="caption">Figure 1.7 : Reflections are spread out over many angles due to orientation of microfacets <a href="#ref1">[6]</a></p>
       </div>
 
       <div class="container">
@@ -205,7 +205,7 @@
           analytical model that is flexible and to avoid using empirical methods in the future. </p>
 
         <img src="images/hommelwerke_tool.png" alt="Hommelwerke Tool" style="display:block; margin-left:auto; margin-right:auto" width="60%">
-        <p class="caption"> Figure 2.1: Hommelwerke Hommel-Tester T2000 [10]</p>
+        <p class="caption"> Figure 2.1: Hommelwerke Hommel-Tester T2000 <a href="#ref1">[10]</a></p>
 
         <p> When analysing real-world scratches, we are going to focus on two geometries: </p>
 
@@ -223,7 +223,7 @@
         <ul>
           <li> The groove is due to the penetration of the tool into the material. </p>
           <li> The peak is due to the flow and pile-up of material during penetration
-            of the tool into the material. [10] </p>
+            of the tool into the material. <a href="#ref1">[10]</a> </p>
         </ul>
 
         <p> The shape of the groove and the internal zones of the peaks are dependent
@@ -241,12 +241,12 @@
           It is found to be directly related to the force applied with the tool and the material
           properties of the object, especially hardness. From the measurements obtained by
         the scratch tester, a function is derived that relates the depth of penetration, d,
-       with the applied force, F<sub>N</sub>, and hardness of material, H<sub>V</sub>. [11]</p>
+       with the applied force, F<sub>N</sub>, and hardness of material, H<sub>V</sub>. <a href="#ref1">[11]</a></p>
        <img src="images/latex2/depth_eq.png" style="display:block; margin-left:auto; margin-right:auto" width="300">
        <p> From the figure, we can see that there are two angles &alpha; and &beta;. This can be measured
           from the cross sectional geometry generated. By knowing that the sum of the areas of the two
           peaks is equal to the area, A, of the groove, with basic trigonometry we are able to find a
-          relation between h, A, &alpha; and &beta;. [11] </p>
+          relation between h, A, &alpha; and &beta;. <a href="#ref1">[11]</a> </p>
        <img src="images/latex2/heightandangles.png" style="display:block; margin-left:auto; margin-right:auto" width="200">
 
      </div>
@@ -280,7 +280,7 @@
          is used to change the BRDF at that point. </p>
 
         <img src="images/2dtexturemapping.png" alt="2D Texture Mapping" style="display:block; margin-left:auto; margin-right:auto" width="50%">
-        <p class="caption"> Figure 2.3 : 2D texture mapping [10]</p>
+        <p class="caption"> Figure 2.3 : 2D texture mapping <a href="#ref1">[10]</a></p>
 
         <p> A complete description of the geometry of the surface is important in determining the BRDF,
           which is used by the computer to determine how light is reflected on every point on the surface. </p>
@@ -288,17 +288,17 @@
         <p class="lead" style="font-size:15px">References:</p>
 		<p class="references">
           <!-- Add your references here-->
-          [1] F. Nicodemus, "Directional reflectance and emissivity of an opaque surface", 1965.
-          <br/>[2] M. McCrory, "Bi-Directional Reflectance Distribution Functions (BRDF’s)", The University of Utah.
-          <br/>[3] Diagram showing vectors used to define the BRDF.. 2018.
-          <br/>[4] OpenGL-Tutorial, Normal texture. .
-          <br/>[5] T. Brennan, S. Merity and T. Wilson, Materials with different BRDFs. 2014.
-          <br/>[6] K. Power, Specular reflection is spread out over many angles due to orientation of microfacets. 1996.
-          <br/>[7] "Reflection, Refraction and Fresnel", Introduction to Shading. .
-          <br/>[8] "Specular vs. Diffuse Reflection", Physicsclassroom.com. [Online]. Available: http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection. [Accessed: 09- Mar- 2018].
-          <br/>[9] The Physics Classroom, Comparison of specular and diffuse reflections. .
-          <br/>[10] S. Mérillou, J. M. Dischler, and D. Ghazanfarpour, “Surface scratches: Measuring, modeling and rendering,” Vis. Comput., vol. 17, no. 1, pp. 30–45, 2001.
-          <br/>[11] C. Bosch, X. Pueyo, S. Mérillou, and D. Ghazanfarpour, “A physically-based model for rendering realistic scratches,” Comput. Graph. Forum, vol. 23, no. 3 SPEC. ISS., pp. 361–370, 2004.
+          <a name="ref1"> <a href="https://www.osapublishing.org/ao/abstract.cfm?uri=ao-4-7-767">[1]</a> F. Nicodemus, "Directional reflectance and emissivity of an opaque surface", 1965. </a>
+          <br/> <a name="ref2"> <a href="https://pdfs.semanticscholar.org/9bc7/487c5adf42218f620f9d4880231770428ddf.pdf">[2]</a> M. McCrory, "Bi-Directional Reflectance Distribution Functions (BRDF’s)", The University of Utah. </a>
+          <br/> <a name="ref3"> [3] Diagram showing vectors used to define the BRDF.. 2018. </a>
+          <br/> <a name="ref4"> [4] OpenGL-Tutorial, Normal texture. . </a>
+          <br/> <a name="ref5"> [5] T. Brennan, S. Merity and T. Wilson, Materials with different BRDFs. 2014. </a>
+          <br/> <a name="ref6"> <a href="http://ieeexplore.ieee.org/abstract/document/626170/?reload=true">[6]</a> K. Power, Specular reflection is spread out over many angles due to orientation of microfacets. 1996. </a>
+          <br/> <a name="ref7"> <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/reflection-refraction-fresnel">[7]</a> "Reflection, Refraction and Fresnel", Introduction to Shading. . </a>
+          <br/> <a name="ref8"> <a href="http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection">[8]</a> "Specular vs. Diffuse Reflection", Physicsclassroom.com. [Online]. Available: http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection. [Accessed: 09- Mar- 2018]. </a>
+          <br/> <a name="ref9"> <a href ="http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection">[9]</a> The Physics Classroom, Comparison of specular and diffuse reflections. . </a>
+          <br/> <a name="ref10"> <a href="https://link.springer.com/article/10.1007/s003710000093">[10]</a> S. Mérillou, J. M. Dischler, and D. Ghazanfarpour, “Surface scratches: Measuring, modeling and rendering,” Vis. Comput., vol. 17, no. 1, pp. 30–45, 2001. </a>
+          <br/> <a name="ref11"> <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1467-8659.2004.00767.x/abstract">[11]</a> C. Bosch, X. Pueyo, S. Mérillou, and D. Ghazanfarpour, “A physically-based model for rendering realistic scratches,” Comput. Graph. Forum, vol. 23, no. 3 SPEC. ISS., pp. 361–370, 2004. </a>
         </p>
 
 		<div class="next-page">
