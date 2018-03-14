@@ -1,0 +1,153 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Replace below for new webpage icon -->
+	<link rel="icon" href="#">
+
+    <title>Rendering Macrogeometry</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/stylesheet.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Navigation</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="landingPage.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="introPage.html">Introduction</a>
+		  </li>
+          <li class="nav-item">
+            <a class="nav-link" href="renderConcepts.html">Geometry and Rendering Concepts</a>
+          </li>
+		  <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+			  <a class="dropdown-item" href="otherModels.html">Basic Models (Lambertian, Phong..)</a>
+              <a class="dropdown-item" href="cookTorranceModel.html">Cook-Torrance Model</a>
+              <a class="dropdown-item" href="wardsModel.html">Ward's Model</a>
+              <a class="dropdown-item" href="schlicksModel.html">Schlick's Model</a>
+			  <a class="dropdown-item" href="#">Advanced Model</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Personal WebPages</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item active" href="bargavi.html">Bargavi Chandramouli</a>
+              <a class="dropdown-item" href="christopher.html">Christopher Gunadi</a>
+              <a class="dropdown-item" href="esther.html">Esther Wong</a>
+			  <a class="dropdown-item" href="jasmine.html">Jasmine Quah</a>
+            </div>
+          </li>
+          <li class="nav-item">
+		    <a class="nav-link" href="tryYourself.html">Try It Yourself!</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Rendering Macrogeometry</h1>
+        </div>
+      </div>
+
+	  <!-- Write your page content here -->
+	  <div class="container">
+        <h1 class="mt-5">Texture Mapping</h1>
+	    <!--<p class="lead">Or like this.</p>-->
+	    <p> Several BRDFs have been suggested to render scratches on surfaces. One of the common characteristics of all of these models is the fact that results (isotropic or anisotropic) give a nearly perfect continuity of the light response on object surfaces, thus resulting in a homogeneous aspect. This kind of behavior usually does not correspond to reality, since realworld surfaces often have a nonuniform appearance (variation of color as for wood, marble, etc., or variation of geometry as for rough-cast, wrinkles, etc.). In order to take into account such complex phenomena, the notion of texture has been introduced to computer graphics. Two-dimensional texture mapping (Catmull 1974) is a technique that allows digitized or synthesized images to be pasted onto object surfaces. In Catmull (1974), the color of the pixels of the texture map is used to modulate the diffuse coefficient of the reflectance model by simple multiplication. Texture mapping can also be used to modulate the transparency, the specular coefficient, the color of the specular reflection, or any other parameter characterizing the reflectance model.[1]
+		</p>
+    <h1 class="mt-5"> Bump mapping </h1>
+
+		<p>Blinn(1978) introduced a normal perturbation technique, called “bump mapping”, that allows one to render such “geometric” effects. It consists in defining a height map, pasted on the object surface (as for usual texture mapping). The heights are used to derive new normals. However, this technique only fakes real geometry such that the limitations become visible if the bumps are high.[1]
+      Typically, bump maps are grayscale images that are limited to 8-bits of color information. That’s only 256 different colors of black, gray or white. These values in a bump map are used to tell the 3D software basically two things. Up or down. When values in a bump map are close to 50% gray, there's little to no detail that comes through on the surface. When values get brighter, working their way to white, details appear to pull out of the surface. To contrast that, when values get darker and closer to black, they appear to be pushing into the surface. [5]
+    		</p>
+    <h1> Normal mapping </h1>
+    <p>Normal maps can be referred to as a newer, better type of bump map. As with bump maps, the first thing you need to understand about normal maps is that the detail they create is also fake. There's no additional resolution added to the geometry in your scene. In the end, a normal map does create the illusion of depth detail on the surface of a model but it does it differently than a bump map. A normal map uses RGB information that corresponds directly with the X, Y and Z axis in 3D space. This RGB information tells the 3D application the exact direction of the surface normals are oriented in for each and every polygon. The orientation of the surface normals, often just referred to as normals, tell the 3D application how the polygon should be shaded.[5]</p>
+    <h1 class="mt-5"> Displacement mapping </h1>
+    <p>Displacement mapping provides high frequency geometric detail by adding mesostructure properties
+to the macrostructure model. This is done by modulating the smooth macrostructure surface by a height map describing the difference between the macrostructure and the
+mesostructure models. Displacement mapping algorithms take sample points and displace them perpendicularly to the normal of the macrostructure surface with the distance obtained from the
+height map. The sample points can be either the vertices of the original or tessellated mesh (per-vertex displacement mapping) or the points corresponding to the texel centers
+(per-pixel displacement mapping). In case of per-vertex displacement mapping the modified geometry goes through the rendering pipeline. However, in per-pixel displacement mapping, surface details are added when color texturing takes
+place. The idea of combining displacement mapping with texture lookups was proposed by Patterson, who called his method as inverse displacement mapping [3]</p>
+    <p align="center"><img src="images/macro1.png" alt="The basic idea of displacement mapping"></img></p>
+    <div class="caption"> <p> Figure 1. The basic idea of displacement mapping </p></div>
+    <p>Displacement mapping techniques allow the simulation of different kinds of surface details. Some of them are based on generating additional geometry, while others simulate detail by modifying surface normals or performing ray tracing on height maps. These techniques are mostly suited for big surface features or low-frequency detail. Otherwise, they require high resolution maps and good anti aliasing methods that can be very time consuming, especially as the distance to the viewer increases. Other approaches have modeled grooves by modifying the object geometry for interactive sculpting purposes. [2]</p>
+    <h1> Bidirectional Texture Function (BTF) </h1>
+    <p>More recently a general form of texture mapping, the bidirectional texture function (BTF), has been introduced (Dana et al. 1997; Dischler 1998; Dana 1999; Mostefaoui et
+al. 1999). A BTF consists in defining a complete “map of BRDFs”, thus resulting in a dependence on the surface aspect according to viewing direction, incident light direction and position on the
+surface. Dana and Nayar (1999) proposed a correlation model characterizing the spatial relationship among neighboring pixels in an image of a texture and the change of this relationship with the viewing
+direction.[1]</p>
+    <h1> Some proposed models </h1>
+    <h4> 1. Using P-NDF and P-BRDF </h4>
+    <p> A method proposed by Yan et al.(2014) models high resolution specular surfaces using normal maps.
+      The effect caused by macrogeometry of scratches can be rendered by considering a whole surface patch as seen through a single pixel.
+      A P-BRDF is a BRDF integrated over a whole patch P.
+      Consider surface with high resolution normal map. Their pixel will map a gaussian footprint P in the map.
+      Now if we sample gaussian P we get probability distribution of normals on unit disk known as the P-NDF.
+      Different pixel footprints over different normal maps leads to different P-NDF shapes. The only thing common to them is that they have sharp features and cannot be approximated by smooth functions.
+      Yan et al. developed an algorithm to calculate the P-NDF at a given point.
+      Then all that is needed to shade surfaces is to plug the P-NDF evaluation into a standard micro-facet BRDF.
+    </p>
+    <h4>2. Using diffraction </h4>
+
+    <p align="center"> <video height=340 width=400 preload="auto" controls>
+      <source src="images/a207-wernerTrim.mp4" type="video/mp4">
+      </video> </p>
+      <div class="caption"> <p> [1] </p> </div>
+    <p class="lead" style="font-size:15px">References:</p>
+		<p class="references">
+        <!-- Add your references here-->
+          <a name="ref1">[1] S. Merillou, J.M. Dischler, D. Ghazanfarpour "Surface scratches: measuring, modeling and rendering" </a>
+          <br/> <a name="ref2">[2] C. Bosch, X. Pueyo,S. Mérillou and D. Ghazanfarpour, "A Resolution Independent Approach for the Accurate Rendering of Grooved Surfaces"</a>
+          <br/> <a name="ref3">[3] L´aszl´o Szirmay-Kalos and Tam´as Umenhoffer, "Displacement Mapping on the GPU — State of the Art", COMPUTER GRAPHICS forum Volume 27 (2008), number 6 pp. 1567–1592 </a>
+          <br/> <a name="ref4">[4]  Sebastian Werner, Zdravko Velinov, Wenzel Jakob, and Matthias B. Hullin.
+2017. "Scratch iridescence: Wave-optical rendering of diffractive surface structure." ACM Trans. Graph. 36, 6, Article 207 (November 2017)</a>
+          <br/> <a name="ref5">[5] PluralSight: Elliminate Texture Confusion: Bump, Normal and Displacement Maps https://www.pluralsight.com/blog/film-games/bump-normal-and-displacement-maps </a>
+		</p>
+		<div class="next-page">
+	      <a class="btn btn-outline-info btn-lg" href="bargavi.html" role="button"> Bargavi Chandramouli &raquo;</a>
+	    </div>
+	    <div class="prev-page">
+		  <a class="btn btn-outline-info btn-lg" href="schlicksModel.html" role="button"> Schlick's Model &laquo;</a>
+	    </div>
+
+      </div>
+
+    </main>
+
+    <footer class="blockquote-footer" style="clear:both">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Authors: Bargavi Chandramouli, Christopher Gunadi, Esther Wong, Jasmine Quah</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
