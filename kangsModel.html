@@ -89,7 +89,7 @@
 		</p>
 
 		<p class="lead">The Microfacet Distribution Function (MDF)</p>
-		<p>The following MDF for anistropic reflectance was originally proposed by Ashikhmin. MDF is denoted by D(W<sub>h</sub>), and is defined as the probability that a microfacet is oriented in the direction w<sub>h</sub> <a href="#ref1">[1]</a>.
+		<p>The following MDF for anistropic reflectance was originally proposed by Ashikhmin. MDF is denoted by D(W<sub>h</sub>), and is defined as the probability that a microfacet is oriented in the direction w<sub>h</sub> <a href="#refs">[1]</a>.
 		</p>
 		
 		<p><img src="images/ashikhminMDF.png" height="80" style="display:block; margin-left:auto; margin-right:auto"></p>
@@ -108,13 +108,13 @@
 		<p>To understand this solution, we must first understand the concept of perturbed normals. Given a surface with direction vectors u and v, a normal vector at point (u, v) can be perturbed in either the u direction or the v direction, or both. This is done by adding small changes &Delta;u and &Delta;v to the vector, where &Delta;u and &Delta;v are derived mathematically from the slope of the bump. A visual example of the outcome of perturbing a vector is found below.</p>
 
 		<p><img src="images/perturbedNormals.png" style="display:block; margin-left:auto; margin-right: auto"></p>
-		<div class="caption"><p>Figure 1: Visual representation of perturbed normals <a href="#ref1">[2]</a>.</p></div>
+		<div class="caption"><p>Figure 1: Visual representation of perturbed normals <a href="#refs">[2]</a>.</p></div>
 
         <p class="lead">MDF Deformation</p>
 		<p>The MDF is deformed using the perturbation of the normal.</p>
 		<ul>
 		  <li>Let the deformed MDF be denoted by D'(w<sub>h</sub>).
-		  <li>Let the normal vector perturbation amount in tangent space be (&Delta;x, &Delta;y). <!-- must define what vector perturbation is -->
+		  <li>Let the normal vector perturbation amount in tangent space be (&Delta;x, &Delta;y).
         </ul>
 		
 		<p>The deformation of the MDF and its effects can be seen in Figure 2.</p>
@@ -126,7 +126,7 @@
 		</p>
 
 		<p class="lead">Scratch Map Generation</p>
-		<p>Metal scratches are expressed with perturbed normal vectors, and the scratch map generation method that Kang et al. uses is created by first engraving a hemisphere, or pit, into a surface. By using this pit, we can apply transformations to them in order to create scratch maps. For example, increasing the depth of the engraved pit or scaling or stretching the hemisphere by any size in any direction. By increasing the number of these pits, we can generate a scratch map that contains either randomly directed scratches, or scratches in a specific direction, which is useful in the rendering of materials such as brushed metal, where the scratches follow a general direction.
+		<p>Metal scratches are expressed with perturbed normal vectors, and the scratch map generation method that Kang et al. uses is created by engraving a hemisphere, or pit. By using this pit and its normal vectors on the engraved surface, we can apply transformations in order to create scratch maps. For example, increasing the depth of the engraved pit or scaling or stretching the hemisphere by any amount in any direction. We can use this method to generate a scratch map that contains either randomly directed scratches, or scratches in a specific direction, which is useful in the rendering of materials such as brushed metal, where the scratches follow a general direction.
 		</p>
 
 		<p class="lead">Experiment Outcomes</p>
