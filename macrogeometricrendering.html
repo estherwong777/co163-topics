@@ -74,32 +74,31 @@
 	  <div class="container">
         <h1 class="mt-5">Texture Mapping</h1>
 	    <!--<p class="lead">Or like this.</p>-->
-	    <p> Several BRDFs have been suggested to render scratches on surfaces. One of the common characteristics of all of these models is the fact that results (isotropic or anisotropic) give a nearly perfect continuity of the light response on object surfaces, thus resulting in a homogeneous aspect. This kind of behavior usually does not correspond to reality, since realworld surfaces often have a nonuniform appearance (variation of color as for wood, marble, etc., or variation of geometry as for rough-cast, wrinkles, etc.). In order to take into account such complex phenomena, the notion of texture has been introduced to computer graphics. Two-dimensional texture mapping (Catmull 1974) is a technique that allows digitized or synthesized images to be pasted onto object surfaces. In Catmull (1974), the color of the pixels of the texture map is used to modulate the diffuse coefficient of the reflectance model by simple multiplication. Texture mapping can also be used to modulate the transparency, the specular coefficient, the color of the specular reflection, or any other parameter characterizing the reflectance model.[1]
+	    <p> Several BRDFs have been suggested to render scratches on surfaces. One of the common characteristics of all these models is the fact that results give a nearly perfect continuity of the light response on object surfaces. This results in a homogeneous aspect.  However, real-world surfaces rarely have such perfect uniformity. To render more realistic surfaces, the concept of texture was introduced. One method to take surface irregularities into account is two-directional texture mapping, introduced by Catmull in 1974. This technique allows images to be pasted onto object surfaces. The colour of the pixels of the texture map is used to modulate the diffuse coefficient of the reflectance model by simple multiplication. This method can be used to modulate other parameters of a BRDF as well.<a href="#ref1">[1]</a>
 		</p>
     <h1 class="mt-5"> Bump mapping </h1>
 
-		<p>Blinn(1978) introduced a normal perturbation technique, called “bump mapping”, that allows one to render such “geometric” effects. It consists in defining a height map, pasted on the object surface (as for usual texture mapping). The heights are used to derive new normals. However, this technique only fakes real geometry such that the limitations become visible if the bumps are high.[1]
-      Typically, bump maps are grayscale images that are limited to 8-bits of color information. That’s only 256 different colors of black, gray or white. These values in a bump map are used to tell the 3D software basically two things. Up or down. When values in a bump map are close to 50% gray, there's little to no detail that comes through on the surface. When values get brighter, working their way to white, details appear to pull out of the surface. To contrast that, when values get darker and closer to black, they appear to be pushing into the surface. [5]
+		<p>This technique was introduced by Blinn in 1978. In this technique, a height map is defined, pasted onto an object’s surface, and then the heights are used to derive new normals. <a href="#ref1">[1]</a>
+A bump map is typically a grey scale image with 8 bits of colour information. The 256 different values, representing the 256 different colours of black, white and grey, are used to tell the bump map exactly two things: up or down.  The brighter the values, the more the details appear to be pulling out of the surface, while the darker values represent details that push down into the surface. A 50% greyness value represents little to no detail.<a href="ref5"> [5] </a>
+<div style="padding-left:3em"><h5>Limitations:</h5>
+<p>Since this technique fakes the geometry, the limitations become visible when the bumps are too high.<a href="#ref1">[1]</a></p></div>
+
+</a>
     		</p>
     <h1> Normal mapping </h1>
-    <p>Normal maps can be referred to as a newer, better type of bump map. As with bump maps, the first thing you need to understand about normal maps is that the detail they create is also fake. There's no additional resolution added to the geometry in your scene. In the end, a normal map does create the illusion of depth detail on the surface of a model but it does it differently than a bump map. A normal map uses RGB information that corresponds directly with the X, Y and Z axis in 3D space. This RGB information tells the 3D application the exact direction of the surface normals are oriented in for each and every polygon. The orientation of the surface normals, often just referred to as normals, tell the 3D application how the polygon should be shaded.[5]</p>
+    <p>Similar to bump maps, though considered as a newer and better technique, the details rendered by normal maps are also fake. Normal maps also create depth detail, but in a different way. It uses RGB information that corresponds to the X, Y and Z axis in 3D space. This information tells the application exactly how the normals are oriented for each area, and this orientation determines how that particular area should be shaded.<a href="#ref5">[5]</a></p>
     <h1 class="mt-5"> Displacement mapping </h1>
-    <p>Displacement mapping provides high frequency geometric detail by adding mesostructure properties
-to the macrostructure model. This is done by modulating the smooth macrostructure surface by a height map describing the difference between the macrostructure and the
-mesostructure models. Displacement mapping algorithms take sample points and displace them perpendicularly to the normal of the macrostructure surface with the distance obtained from the
-height map. The sample points can be either the vertices of the original or tessellated mesh (per-vertex displacement mapping) or the points corresponding to the texel centers
-(per-pixel displacement mapping). In case of per-vertex displacement mapping the modified geometry goes through the rendering pipeline. However, in per-pixel displacement mapping, surface details are added when color texturing takes
-place. The idea of combining displacement mapping with texture lookups was proposed by Patterson, who called his method as inverse displacement mapping [3]</p>
+    <p>This method provides a way to render details by adding mesostructure properties to the macrostructure model. This is done with the help of a height map that describes the difference between the macrostructure and mesostructured models. The algorithms for this technique obtain a distance from the height map and displace sample points perpendicularly to the normal of the macrostructure surface according to this distance.
+</p><p>
+The sample point can either be a vertex of the original mesh (per-vertex displacement mapping), or a point corresponding to the texel centre (per-pixel displacement mapping).
+<a href="#ref3"> [3] </a> </p>
     <p align="center"><img src="images/macro1.jpg" height=180 width=700 alt="The basic idea of displacement mapping"></img></p>
     <div class="caption"> <p> Figure 1. The basic idea of displacement mapping </p></div>
-    <p>Displacement mapping techniques allow the simulation of different kinds of surface details. Some of them are based on generating additional geometry, while others simulate detail by modifying surface normals or performing ray tracing on height maps. These techniques are mostly suited for big surface features or low-frequency detail. Otherwise, they require high resolution maps and good anti aliasing methods that can be very time consuming, especially as the distance to the viewer increases. Other approaches have modeled grooves by modifying the object geometry for interactive sculpting purposes. [2]</p>
+    <p>Displacement mapping techniques allow the simulation of different kinds of surface details. Some of them are based on generating additional geometry, while others simulate detail by modifying surface normals or performing ray tracing on height maps. These techniques are mostly suited for big surface features or low-frequency detail. Otherwise, they require high resolution maps and good anti aliasing methods that can be very time consuming, especially as the distance to the viewer increases. Other approaches have modeled grooves by modifying the object geometry for interactive sculpting purposes.<a href="#ref2"> [2] </a> </p>
     <h1> Bidirectional Texture Function (BTF) </h1>
-    <p>More recently a general form of texture mapping, the bidirectional texture function (BTF), has been introduced (Dana et al. 1997; Dischler 1998; Dana 1999; Mostefaoui et
-al. 1999). A BTF consists in defining a complete “map of BRDFs”, thus resulting in a dependence on the surface aspect according to viewing direction, incident light direction and position on the
-surface. Dana and Nayar (1999) proposed a correlation model characterizing the spatial relationship among neighboring pixels in an image of a texture and the change of this relationship with the viewing
-direction.[1]</p>
+    <p>A BTF(Bidirectional Texture Function) is a more general form of texture mapping. It is defined as a complete map of BRDFs, resulting in a dependence on the surface aspect according to viewing direction, incident light direction and position on the surface.<a href="#ref1">[1]</a></p>
     <h1> Some proposed models summarised</h1>
-    <h4> 1. Using P-NDF and P-BRDF [6]</h4>
+    <h4> 1. Using P-NDF and P-BRDF <a href="#ref6"> [6] </a> </h4>
     <p> A method proposed by Yan et al.(2014) models high resolution specular surfaces using normal maps.
       The effect caused by macrogeometry of scratches can be rendered by considering a whole surface patch as seen through a single pixel.
       A P-BRDF is a BRDF integrated over a whole patch P.
@@ -112,7 +111,7 @@ direction.[1]</p>
       <div class="caption"><p> Figure 2. The term in the yellow box is the NDF evaluation for the given half vector</p></div>
     </p>
     <p></p>
-    <h4>2. Using diffraction [4]</h4>
+    <h4>2. Using diffraction <a href="#ref4"> [4] </a> </h4>
     <p> Another proposed model involves introducing a wave-optical model to simulate complex iridiscent behaviour of scratches. The steps involved are:
       <ol>
         <li> The appearance of worn surfaces is rendered. To this end the scratches within a coherence area is retrieved.</li>
@@ -125,7 +124,7 @@ direction.[1]</p>
     <p align="center"> <video height=340 width=400 preload="auto" controls>
       <source src="images/a207-wernerTrim.mp4" type="video/mp4">
       </video> </p>
-      
+
     <p class="lead" style="font-size:15px">References:</p>
 		<p class="references">
         <!-- Add your references here-->
