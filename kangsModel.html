@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="landingPage.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
           </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="introPage.html">Introduction</a>
@@ -92,16 +92,16 @@
 		<p>The following MDF for anistropic reflectance was originally proposed by Ashikhmin. MDF is denoted by D(W<sub>h</sub>), and is defined as the probability that a microfacet is oriented in the direction w<sub>h</sub> <a href="#ref1">[1]</a>.
 		</p>
 		
-		<p><img src="images/ashikhminMDF.png" style="display:block; margin-left:auto; margin-right:auto"></p>
+		<p><img src="images/ashikhminMDF.png" height="80" style="display:block; margin-left:auto; margin-right:auto"></p>
 
 		<ul>
 		  <li>n - normal vector at the point to be rendered
-		  <li>w<sub>h</sub> - halfway vector between the incident light direction and the outgoing viewing direction
+		  <li>w<sub>h</sub> - half vector between the incident light direction and the outgoing viewing direction
 		  <li>e<sub>x</sub>, e<sub>y</sub> - parameters that control the anistropy of reflection (meaning corresponds to <img src="images/latex/alphaX.svg" style="width:20px; height:20px"> and <img src="images/latex/alphaY.svg" style="width:20px; height:20px"> in <a href="wardsModel.html">Ward's model</a>)
 		  <li><img src="images/latex/phi.svg" style="width:20px; height:20px"> - azimuthal angle of the half vector, as defined in Ward's model
         </ul>
 
-		<p>However, the main issue with this MDF is that when used with normal mapping, the anisotropic reflectance on the surface is not captured well, and this method is not capable of realistically rendering small scratches in metals in close viewing. Therefore, Kang et al. proposed a solution to this by providing a deformed MDF that could solve this problem, and ensures a more accurate rendering of anistropic surfaces.
+		<p>However, the main issue with this MDF is that when used with normal mapping, the anisotropic reflectance on the surface is not captured well, and this method is not capable of realistically rendering small scratches in metals in close viewing. Therefore, Kang et al. proposed a solution to this by providing a deformed MDF that could solve this problem, and which ensures a more accurate rendering of anistropic surfaces.
 		</p>
 
 		<p class="lead">Perturbed Normals</p>
@@ -117,7 +117,7 @@
 		  <li>Let the normal vector perturbation amount in tangent space be (&Delta;x, &Delta;y). <!-- must define what vector perturbation is -->
         </ul>
 		
-		<p>The deformation of the MDF is seen in Figure 2.</p>
+		<p>The deformation of the MDF and its effects can be seen in Figure 2.</p>
 
 		<p><img src="images/deformedMDF.png" style="display:block; margin-left:auto; margin-right: auto; width:70%"></p>
 		<div class="caption"><p>Figure 2: Deformation of the MDF.</p></div>
@@ -126,7 +126,7 @@
 		</p>
 
 		<p class="lead">Scratch Map Generation</p>
-		<p>Metal scratches are expressed with perturbed normal vectors, and we represent the metallic appearance by engraving small scratches onto the material. The scratch map generation method that Kang et al. uses was created by first engraving a hemisphere into a surface. By using this basic hemisphere, also known as a pit, we can apply transformations to them in order to create scratch maps. For example, increasing the depth of the engraved pit or scaling or stretching the hemisphere by any size in any direction. By increasing the number of these pits, we can generate a scratch map that contains either randomly directly scratches, or scratches in a specific direction, which is useful in the rendering of materials such as brushed metal.
+		<p>Metal scratches are expressed with perturbed normal vectors, and the scratch map generation method that Kang et al. uses is created by first engraving a hemisphere, or pit, into a surface. By using this pit, we can apply transformations to them in order to create scratch maps. For example, increasing the depth of the engraved pit or scaling or stretching the hemisphere by any size in any direction. By increasing the number of these pits, we can generate a scratch map that contains either randomly directed scratches, or scratches in a specific direction, which is useful in the rendering of materials such as brushed metal, where the scratches follow a general direction.
 		</p>
 
 		<p class="lead">Experiment Outcomes</p>
@@ -134,14 +134,14 @@
 		<img src="images/kangComparison.png" style="display:block; margin-left:auto; margin-right:auto; width:90%">
 		<div class="caption"><p>Figure 3: Comparison between simple normal mapping and Kang's solution.</p></div>
 
-		<p>In the original paper, he utilised OpenGL to render scratched metals using his deformed MDF. Figure 3 shows the difference between rendering techniques using normal maps and using normal maps with an MDF deformation. You can observe more realistic light scattering along the rim of the specular reflection area using the deformed MDF, as it is better suited for anisotropic surfaces, and you can also see that the way in which light is scattered in simple normal mappings is not plausible.
+		<p>In the original paper, OpenGL was used to render scratched metals using the deformed MDF. Figure 3 shows the difference between rendering techniques using normal maps and using normal maps with an MDF deformation. You can observe that the way in which light is scattered in simple normal mappings is not plausible, whereas more realistic light scattering along the rim of the specular reflection area is visible using the deformed MDF, as it is better suited for anisotropic surfaces.
 		</p>
 
 		<p class="lead">Conclusions:</p>
 		<ul>
 		  <li>The deformed MDF shows more detailed and realistic rendering quality in comparison with the simple normal mapping approach.
 		  <li>This method is good for rendering metallic surfaces with scratches on a close scale.
-		  <li>The computational cost is small enough to render these materials in real-time, and the method also does not require any measured data.
+		  <li>The computational cost of this method is small enough to render these materials in real-time, and the method also does not require any measured data.
 		</ul>
 
 		<p class="lead" style="font-size: 15px">References:</p>
