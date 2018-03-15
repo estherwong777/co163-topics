@@ -32,7 +32,7 @@
           </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="introPage.html">Introduction</a>
-		  </li>	
+		  </li>
           <li class="nav-item">
             <a class="nav-link" href="renderConcepts.html">Geometry and Rendering Concepts</a>
           </li>
@@ -75,7 +75,7 @@
         <h1 class="mt-5">Cook-Torrance Model</h1>
 	    <p class="lead">Published in 1982</p>
 	    <p>The Cook-Torrance model presents a reflectance model that is more general
-        than previous models. [1] Previous models such as <a href="otherModels.html">Phong</a> gives a plastic
+        than previous models. <a href="ref1">[1]</a> Previous models such as <a href="otherModels.html">Phong</a> gives a plastic
         appearance, and Cook-Torrance helps to avoid that.
 		</p> <!-- REMEMBER TO REFERENCE CITATIONS-->
 
@@ -90,7 +90,7 @@
     </ul>
 
     <img src="images/geometry_of_reflection.jpg" alt="Geometry of reflection" width="60%" style="display:block; margin-left:auto; margin-right:auto">
-    <p align="middle"> Figure 1 : the geometry of reflection [1] </p>
+    <p align="middle"> Figure 1 : the geometry of reflection <a href="ref1">[1]</a> </p>
 
     <p> The energy of the incident light is expressed as energy per unit time and per unit area of the reflecting surface. The intensity is similar, but is expressed per unit projected area and per unit solid angle. The formula for the energy of incident light is below.
     </p>
@@ -106,7 +106,7 @@
     </ul>
 
     <img src="images/visualisation_of_reflection.png" alt="visual of reflection" style="display:block; margin-left:auto; margin-right:auto">
-    <p align="middle"> Figure 2 : visualisation of reflection [2]</p>
+    <p align="middle"> Figure 2 : visualisation of reflection <a href="ref1">[2]</a></p>
 
     <p> Since the incoming beam is likely to be reflected over a wide range of angles as shown on figure 2,
       the reflected intensity in any given direction depends on the incident energy.
@@ -180,13 +180,13 @@
       the parameters given to the right image for rendering. </p>
 
     <img src="images/phong_vs_cooktorrance.jpg" width="60%" alt="Phong vs Cook-Torrance" style="display:block; margin-left:auto; margin-right:auto">
-    <p class="caption"> Figure 3a (left): rendered copper-coloured vase, Figure 3b (right): rendered copper vase [1]</p>
+    <p class="caption"> Figure 3a (left): rendered copper-coloured vase, Figure 3b (right): rendered copper vase <a href="ref1">[1]</a></p>
 
     <img src="images/coppercoloured_parameters.png" height="110px" alt="Copper-coloured vase parameters" style="display:block; margin-left:auto; margin-right:auto">
-    <p class="caption"> Figure 4 : Parameters for rendered image in figure 3a (Copper-coloured vase) [1]</p>
+    <p class="caption"> Figure 4 : Parameters for rendered image in figure 3a (Copper-coloured vase) <a href="ref1">[1]</a></p>
 
     <img src="images/coppervase_parameters.png" height="180px" alt="Copper vase parameters" style="display:block; margin-left:auto; margin-right:auto">
-    <p class="caption"> Figure 5 : Parameters for rendered image in figure 3b (Copper vase) [1]</p>
+    <p class="caption"> Figure 5 : Parameters for rendered image in figure 3b (Copper vase) <a href="ref1">[1]</a></p>
 
     <p> The left image shows a material with a more plastic-like appearance.
       Its specular component has the colour of its incident light while its
@@ -247,7 +247,7 @@
         <td> 0.35
       </tr>
     </table>
-    <p class="caption"> Table 1 : this table shows parameters for non-metals used in figure 6. [1] </p>
+    <p class="caption"> Table 1 : this table shows parameters for non-metals used in figure 6. <a href="ref1">[1]</a> </p>
 
     <img src="images/differentmaterials.png" width="50%" alt="Different materials rendered" style="display:block; margin-left:auto; margin-right:auto">
     <p class="caption"> Figure 6 : Examples of different materials rendered using Cook-Torrance </p>
@@ -285,8 +285,8 @@
       <p class="lead" style="font-size:15px">References</p>
 	  <p class="references">
             <!-- Add your references here-->
-            [1] R. L. Cook and K. E. Torrance, “A reflectance model for computer graphics,” ACM SIGGRAPH Comput. Graph., vol. 15, no. 3, pp. 307–316, 1981.
-            <br/> [2] "Physical based rendering: Cook-Torrance", Codinglabs.net, 2018. [Online]. Available: http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx. [Accessed: 09- Mar- 2018].
+            <a name="ref1">[1] R. L. Cook and K. E. Torrance, “<a href="https://dl.acm.org/citation.cfm?id=357293">A reflectance model for computer graphics,</a>” ACM SIGGRAPH Comput. Graph., vol. 15, no. 3, pp. 307–316, 1981. </a>
+            <br/> [2] "Physical based rendering: Cook-Torrance", Codinglabs.net, 2018. [Online]. Available: <a href="http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx">http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx </a>. [Accessed: 09- Mar- 2018].
       </p>
 	  <div class="next-page">
 	    <a class="btn btn-outline-info btn-lg" href="wardsModel.html" role="button">Ward's Model &raquo;</a>
