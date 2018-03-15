@@ -76,7 +76,7 @@
         <h1 class="mt-5">Model created using the MDF of a Normal Mapped Surface</h1> <!-- References: https://www.slideserve.com/maya/real-time-rendering, -->
 	    <p class="lead">This describes the model proposed by Young-Min Kang, Hwan-Gue Cho and Sung-Soo Kim in a 2011 publication.</p>
 
-        <p>This model presents an effective method to render metals with small scratches more realistically. Anisotropic models are widely used to render scratched metals, however the use of these models alongside normal mapping is not often considered, and combining the two produces unrealistic results. Kang et al. propose an alternative method to overcome this problem and show more realistic light scattering of the scratches, particularly for specular reflection. 
+        <p>This model presents an effective method to render metals with small scratches more realistically. Anisotropic models are widely used to render scratched metals, however the use of these models alongside normal mapping is not often considered, and combining the two produces unrealistic results. Kang et al. proposed an alternative method to overcome this problem and show more realistic light scattering of the scratches, particularly for specular reflection. 
 		</p>
 
 	    <!-- include fig 3 for examples for diff MDFS -->
@@ -109,11 +109,13 @@
 		  <li>Let the deformed MDF be denoted by D'(w<sub>h</sub>).
 		  <li>Let the normal vector perturbation amount in tangent space be (&Delta;x, &Delta;y). <!-- must define what vector perturbation is -->
         </ul>
+		
+		<p>The deformation of the MDF is seen in Figure 2.</p>
 
-		<p><img src="images/deformedMDF.png" style="display:block; margin-left:auto; margin-right: auto; width:80%"></p>
-		<div class="caption"><p>Figure 2: .</p></div>
+		<p><img src="images/deformedMDF.png" style="display:block; margin-left:auto; margin-right: auto; width:70%"></p>
+		<div class="caption"><p>Figure 2: Deformation of the MDF.</p></div>
 
-		<p>The deformation of the MDF is seen in FIgure 2.</p>Since the MDF is being deformed, any point p, in the domain of the original MDF, must have a corresponding p' in the domain of the newly defined MDF. This transformation from p to p' is determined by the perturbation of the normal vector. Let us denote a transformation from p to p' as T(p, &Delta;x, &Delta;y).
+        <p>Since the MDF is being deformed, any point p, in the domain of the original MDF, must have a corresponding p' in the domain of the newly defined MDF. This transformation from p to p' is determined by the perturbation of the normal vector. We can denote the transformation from p to p' as T(p, &Delta;x, &Delta;y).
 		</p>
 
 		<p class="lead">Scratch Map Generation</p>
@@ -121,7 +123,11 @@
 		</p>
 
 		<p class="lead">Experiment Outcomes</p>
-		<p>In the original paper, he utilised OpenGL to render scratched metals using his deformed MDF. Figure 9/12 <!-- change --> shows the difference between rendering techniques using normal maps and using normal maps with an MDF deformation. You can observe more realistic light scattering along the rim of the specular reflection area using the deformed MDF, as it is better suited for anisotropic surfaces, and you can also see that the way in which light is scattered in simple normal mappings is not plausible.
+
+		<img src="images/kangComparison.png" style="display:block; margin-left:auto; margin-right:auto; width:90%">
+		<div class="caption"><p>Figure 3: Comparison between simple normal mapping and Kang's solution.</p></div>
+
+		<p>In the original paper, he utilised OpenGL to render scratched metals using his deformed MDF. Figure 3 shows the difference between rendering techniques using normal maps and using normal maps with an MDF deformation. You can observe more realistic light scattering along the rim of the specular reflection area using the deformed MDF, as it is better suited for anisotropic surfaces, and you can also see that the way in which light is scattered in simple normal mappings is not plausible.
 		</p>
 
 		<p class="lead">Conclusions:</p>
